@@ -1,0 +1,51 @@
+// Eliminarea scrolling-ului dublu
+#app {
+    overflow-x: initial !important;
+}
+// Stilul meniului de optiuni pentru postare, in
+// pagina discutiei
+.Post-actions-top {
+    > ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    &, a {
+        color: @muted-color;
+    }
+    a {
+        display: inline-block;
+    
+        .icon {
+            display: none;
+    }
+    }
+    margin-top: -5px;
+    float: right;
+    position: relative;
+
+    .transition(opacity 0.2s);
+
+    .EventPost &, .Post--hidden:not(.revealContent) & {
+        margin-top: -27px;
+        margin-bottom: -15px;
+    }
+
+    @media @tablet-up {
+        .no-touch & {
+        opacity: 0;
+        }
+    }
+
+    > ul {
+        > li {
+        margin-right: 0;
+        margin-left: -5px;
+        display: inline-block;
+        vertical-align: top;
+        }
+    }
+    .Post:hover &, &.open {
+        opacity: 1;
+    }
+}

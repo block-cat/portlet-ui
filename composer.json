@@ -1,0 +1,34 @@
+{
+  "name": "block-cat/portlet-ui",
+  "description": "UI for Portlet",
+  "keywords": [
+    "flarum"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^1.0"
+  },
+  "authors": [{
+    "name": "BlockCat"
+  }, {
+    "name": "Vascan"
+  }, {
+    "name": "Tudor"
+  }],
+  "autoload": {
+    "psr-4": {
+      "BlockCat\\PortletUI\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Portlet UI",
+      "icon": {
+        "name": "fas fa-users",
+        "backgroundColor": "#fa0",
+        "color": "#fff"
+      }
+    }
+  }
+}

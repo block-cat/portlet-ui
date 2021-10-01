@@ -1,0 +1,92 @@
+.block-cat-portlet-ui-Page {
+    .inline {
+        display: inline-flex;
+        column-gap: 10px;
+    
+        i {
+            line-height: 35px;
+            font-size: 20px;
+            color: rgb(77, 105, 142);;
+        }
+    
+        span {
+            font-weight: bold;
+            white-space: nowrap;
+            line-height: 35px;
+            color: rgb(77, 105, 142);;
+        }
+    }
+
+    .Form-group {
+        > label > li {
+            list-style: none;
+        }
+    }
+}
+.SettingsGroup {
+    display: flex;
+    column-count: 2;
+    column-gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    .Settings, .Routes {
+        border: 1px solid #e8ecf3;
+        padding: 10px 20px;
+        border-radius: 4px;
+        flex: 1 1;
+        display: inline-grid;
+        grid-template-rows: min-content;
+
+        > label {
+            float: left;
+            font-weight: bold;
+            color: #667c99;
+            margin-bottom: 10px;
+            font-size: large;
+        }
+    }
+}
+
+.Default-Routes-Field-Wrap {
+    position: relative;
+    max-width: 400px;
+}
+
+.Default-Routes-Input {
+    padding-top: 1.3em;
+    height: auto;
+}
+
+.Default-Routes-Placeholder {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 13px 0;
+    transition: .2s transform;
+    font-size: 1.2em;
+    transform-origin: 0 0;
+    transform: translate(0) scale(1);
+    pointer-events: none;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Default-Routes-Placeholder-Hint {
+    display: none;
+    color: #aaa;
+}
+
+.Default-Routes-Input:focus + .Default-Routes-Placeholder,
+.Default-Routes-Field--with-value .Default-Routes-Placeholder {
+    transform: translate(4px, -6px) scale(0.75);
+    color: #333;
+
+    .Default-Routes-Placeholder-Hint {
+        display: inline-block;
+    }
+}
