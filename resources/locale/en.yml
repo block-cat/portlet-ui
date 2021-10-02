@@ -61,4 +61,6 @@ block-cat-default:
       user.mentions: "Set path for user mentions page"
       user.posts: "Set path for user posts page"
       user.uploads: "Set path for user uploads page"
-  
+    vasia_settings:
+      button_3d_new: "Button 3d view"
+      button_3d_new_help_text: "Button 3d view enabled"
