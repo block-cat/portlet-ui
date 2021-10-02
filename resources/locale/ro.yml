@@ -1,4 +1,14 @@
 block-cat-default:
+  forum:
+    text_top_left: "Toate discuțiile"
+    sort_button_1: "Cele mai actuale"
+    sort_button_2: "Cele mai citite"
+    sort_button_3: "Cele mai noi"
+    sort_button_4: "Cele mai vechi"
+    likes: "votes"
+    answers: "answers"
+    views: "views"
+    button_citeste_mai_mult: "Citeste mai mult..."
   admin:
     settings:
       title: "Setări"
@@ -51,3 +61,4 @@ block-cat-default:
       user.mentions: "Setați calea pentru pagina mențiunilor utilizatorului"
       user.posts: "Setați calea pentru pagina postărilor utilizatorului"
       user.uploads: "Setați calea pentru pagina încărcărilor utilizatorului"
+  

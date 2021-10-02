@@ -1,4 +1,14 @@
 block-cat-default:
+  forum:
+    text_top_left: "All discussions"
+    sort_button_1: "The most current"
+    sort_button_2: "The most read"
+    sort_button_3: "Newest"
+    sort_button_4: "The oldest"
+    likes: "voturi"
+    answers: "comentarii "
+    views: "vizualizări"
+    button_citeste_mai_mult: "Read more..."
   admin:
     settings:
       title: "Settings"
@@ -51,3 +61,4 @@ block-cat-default:
       user.mentions: "Set path for user mentions page"
       user.posts: "Set path for user posts page"
       user.uploads: "Set path for user uploads page"
+  
