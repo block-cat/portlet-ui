@@ -61,4 +61,7 @@ block-cat-default:
       user.mentions: "Setați calea pentru pagina mențiunilor utilizatorului"
       user.posts: "Setați calea pentru pagina postărilor utilizatorului"
       user.uploads: "Setați calea pentru pagina încărcărilor utilizatorului"
-  
+    vasia_settings:
+      title: "Ui"
+      button_3d_new: "Vizualizare buton 3d"
+      button_3d_new_help_text: "Button 3d view enabled"

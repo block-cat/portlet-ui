@@ -15,6 +15,8 @@ export default class DefaultSettingsPage extends ExtensionPage {
     this.settings = JSON.parse(app.data.settings["block-cat.default_settings"]);
     // get routes name in Object format
     this.routes = JSON.parse(app.data.settings["block-cat.default_routes"]);
+    // get settings vasia
+    this.vasia_settings = JSON.parse(app.data.settings["block-cat.vasia_settings"]);
 
     // is used when data is saving
     this.loading = false;
@@ -32,7 +34,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
     };
 
     this.sameValue = {}
-    
+
     // check value for settings with dependencies
     // if value === 1 then some settings should to hide on page
     Object.keys(this.settings).map((key) => {
@@ -65,7 +67,27 @@ export default class DefaultSettingsPage extends ExtensionPage {
             m('.SettingsGroup', [ // container to flex in 2 column
               m('.Settings', [ // Start Settings Column
                 m('label', app.translator.trans('block-cat-default.admin.settings.title')),
+
+                Object.keys(this.vasia_settings).map((key) => {
+                  if (key === 'button_3d_new') {
+                    return [
+                      !this.settingStates.hideDiscussionMenu ? // check if 'discussionMenu' is not selected
+                        m('.Form-group', [ // controlsButton and scrubberDiv
+                          Switch.component({
+                            state: this.vasia_settings[key] || false,
+                            onchange: () => {
+                              this.vasia_settings[key] ^= true;
+                              this.modified = true;
+                            }
+                          },
+                            m('li', app.translator.trans(`block-cat-default.admin.vasia_settings.${key}`))
+                          ),
+                        ]) : ''
+                    ];
+                  }
+                }),
                 !this.settingStates.hideMainPageMenu ? // check if 'mainPageMenu' is not selected
+
                   m('.Form-group', [ // allDiscussionsIcon
                     m('label', app.translator.trans('block-cat-default.admin.settings.icon')),
                     m('.helpText', app.translator.trans('block-cat-default.admin.settings.icon_help_text', { text: allDiscussions })),
@@ -84,6 +106,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
                       })
                     ),
                   ]) : '',
+
                 Object.keys(this.settings).map((key) => {
                   // exit because element was created yet
                   if (key === 'allDiscussionsIcon') return;
@@ -99,7 +122,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
                               this.modified = true;
                             }
                           },
-                          m('li', app.translator.trans(`block-cat-default.admin.settings.${key}`))
+                            m('li', app.translator.trans(`block-cat-default.admin.settings.${key}`))
                           ),
                           m('.helpText', app.translator.trans(`block-cat-default.admin.settings.${key}_help_text`)),
                         ]) : ''
@@ -109,18 +132,18 @@ export default class DefaultSettingsPage extends ExtensionPage {
                   if (key === 'controlsButton' || key === 'scrubberDiv') {
                     return [
                       !this.settingStates.hideDiscussionMenu ? // check if 'discussionMenu' is not selected
-                      m('.Form-group', [ // controlsButton and scrubberDiv
-                        Switch.component({
-                          state: this.settings[key] || false,
-                          onchange: () => {
-                            this.settings[key] ^= true;
-                            this.modified = true;
-                          }
-                        },
-                        m('li', app.translator.trans(`block-cat-default.admin.settings.${key}`))
-                        ),
-                        m('.helpText', app.translator.trans(`block-cat-default.admin.settings.${key}_help_text`)),
-                      ]) : ''
+                        m('.Form-group', [ // controlsButton and scrubberDiv
+                          Switch.component({
+                            state: this.settings[key] || false,
+                            onchange: () => {
+                              this.settings[key] ^= true;
+                              this.modified = true;
+                            }
+                          },
+                            m('li', app.translator.trans(`block-cat-default.admin.settings.${key}`))
+                          ),
+                          m('.helpText', app.translator.trans(`block-cat-default.admin.settings.${key}_help_text`)),
+                        ]) : ''
                     ];
                   }
 
@@ -138,13 +161,18 @@ export default class DefaultSettingsPage extends ExtensionPage {
                           key === 'discussionMenu' ? this.settingStates.hideDiscussionMenu ^= true : '';
                         }
                       },
-                      m('li', app.translator.trans(`block-cat-default.admin.settings.${key}`))
+                        m('li', app.translator.trans(`block-cat-default.admin.settings.${key}`))
                       ),
                       m('.helpText', app.translator.trans(`block-cat-default.admin.settings.${key}_help_text`)),
                     ])
                   ];
                 }),
+
+                
+
               ]), // End Settings Column
+
+
 
               m('.Routes', [ // Start Routes Column
                 m('label', app.translator.trans('block-cat-default.admin.routes.title')),
@@ -219,6 +247,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
                   ])
                 }),
               ]), // End Routes Column
+
             ]),
             // save button
             Button.component(
@@ -251,7 +280,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
         }
       });
     });
-    
+
     if (k > 0) {
       app.alerts.show(
         Alert,
@@ -271,6 +300,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
       saveSettings({
         ["block-cat.default_settings"]: JSON.stringify(this.settings),
         ["block-cat.default_routes"]: JSON.stringify(this.routes),
+        ["block-cat.vasia_settings"]: JSON.stringify(this.vasia_settings),
       });
       app.alerts.show(
         Alert,
@@ -290,6 +320,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
     } finally {
       this.settings = JSON.parse(app.data.settings["block-cat.default_settings"]);
       this.routes = JSON.parse(app.data.settings["block-cat.default_routes"]);
+      this.vasia_settings = JSON.parse(app.data.settings["block-cat.vasia_settings"]);
       this.loading = false;
       this.modified = false;
     }
