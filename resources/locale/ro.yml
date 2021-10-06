@@ -65,3 +65,4 @@ block-cat-default:
       title: "Ui"
       button_3d_new: "Vizualizare buton 3d"
       button_3d_new_help_text: "Button 3d view enabled"
+      sideNav_shadow: "SideNav Shadow"

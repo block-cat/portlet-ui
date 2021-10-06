@@ -14,6 +14,11 @@ export default function () {
       if (button_new != undefined) {
         button_new.classList.add("item-newDiscussion_3d");
       }
+    } else {
+      let button_new = document.getElementsByClassName("item-newDiscussion")[0];
+      if (button_new != undefined) {
+        button_new.classList.add("item-newDiscussion-stackoverflow");
+      }
     }
 
     if (items.has('nav')) {
@@ -35,6 +40,19 @@ export default function () {
       }
     }
 
+    if (vasiaSettings.sideNav_shadow) {
+      let sideNav_shadow = document.getElementsByClassName("sideNav")[0];
+      if (sideNav_shadow != undefined) {
+        sideNav_shadow.classList.add("sideNav_border");
+      }
+    } else {
+      let nav_Navigation = document.getElementsByClassName("nav_Navigation")[0];
+      let nav_Navigation1 = document.getElementsByClassName("nav_Navigation")[1];
+      if (nav_Navigation != undefined) {
+        nav_Navigation.classList.add("nav_Navigation_shadow");
+        nav_Navigation1.classList.add("nav_Navigation_shadow");
+      }
+    }
 
     items.add(
       'nav_Navigation',
@@ -59,6 +77,6 @@ export default function () {
         items2
       )
     );
-  })
 
+  });
 }

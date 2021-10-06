@@ -8,7 +8,7 @@ export default function () {
 
     extend(IndexPage.prototype, 'viewItems', function (items) {
         if (items.has('sort')) {
-          items.remove('sort');
+            items.remove('sort');
         }
     })
 
@@ -19,7 +19,7 @@ export default function () {
             LinkButton.component({
                 title: "Noi",
                 className: 'Button Button--primary',
-                href: '/?sort=newest',
+                href: '?sort=newest',
             },
                 app.translator.trans('block-cat-default.forum.sort_button_3')
             )
@@ -30,7 +30,7 @@ export default function () {
             LinkButton.component({
                 title: "Vechi",
                 className: 'Button Button--primary',
-                href: '/?sort=oldest',
+                href: '?sort=oldest',
             },
                 app.translator.trans('block-cat-default.forum.sort_button_4')
             )

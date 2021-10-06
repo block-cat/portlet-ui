@@ -64,3 +64,4 @@ block-cat-default:
     vasia_settings:
       button_3d_new: "Button 3d view"
       button_3d_new_help_text: "Button 3d view enabled"
+      sideNav_shadow: "SideNav  Shadow"

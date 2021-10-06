@@ -5,6 +5,7 @@ use Flarum\Database\Migration;
 $vasia_settings = [
     // use if should hide sidemenu on main page
     'button_3d_new' => 0,
+    'sideNav_shadow' => 0,
    
 ];
 
