@@ -40,7 +40,7 @@ export default function () {
       }
     }
 
-    if (vasiaSettings.sideNav_shadow) {
+    if (!vasiaSettings.sideNav_shadow) {
       let sideNav_shadow = document.getElementsByClassName("sideNav")[0];
       if (sideNav_shadow != undefined) {
         sideNav_shadow.classList.add("sideNav_border");
@@ -51,6 +51,13 @@ export default function () {
       if (nav_Navigation != undefined) {
         nav_Navigation.classList.add("nav_Navigation_shadow");
         nav_Navigation1.classList.add("nav_Navigation_shadow");
+      }
+    }
+
+    if (!vasiaSettings.view_hero) {
+      let view_hero = document.getElementsByClassName("Hero")[0];
+      if (view_hero != undefined) {
+        view_hero.classList.add("d-none");
       }
     }
 

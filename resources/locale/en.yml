@@ -6,7 +6,7 @@ block-cat-default:
     sort_button_3: "Newest"
     sort_button_4: "The oldest"
     likes: "voturi"
-    answers: "comentarii "
+    comments: "comments"
     views: "vizualizări"
     button_citeste_mai_mult: "Read more..."
   admin:
@@ -65,3 +65,6 @@ block-cat-default:
       button_3d_new: "Button 3d view"
       button_3d_new_help_text: "Button 3d view enabled"
       sideNav_shadow: "SideNav  Shadow"
+      buttons_votes_answers_views: "buttons votes answers views"
+      view_tags: "View Tags"
+      view_hero: "View Hero"

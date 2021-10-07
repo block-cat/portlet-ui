@@ -6,6 +6,7 @@
     .sideNav,
     .sideNav>ul {
       width: 220px;
+      margin-right: auto;
     }
 
     .sideNav_border {
@@ -68,6 +69,7 @@
 /* box-shadow: 0 4px 8px rgba(0, 0, 0, .10);
     border-radius: 14px; */
 .DiscussionListItem {
+  margin-left: 0px;
   border-bottom: 1px solid #eff0f1;
   padding-bottom: 15px;
 }
@@ -130,7 +132,7 @@
 
   }
 
-  .IndexPage-toolbar-action {
+  .IndexPage-toolbar-view {
     zoom: 0.7;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -139,7 +141,7 @@
 
 }
 
-.IndexPage-toolbar-action>li>a {
+.IndexPage-toolbar-view>li>a {
   background: transparent;
   font-weight: 400;
   font-size: 12px;
@@ -152,21 +154,21 @@
   /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; */
 }
 
-.IndexPage-toolbar-action>li>a:hover {
+.IndexPage-toolbar-view>li>a:hover {
   background: #f8f9f9;
 }
 
-.IndexPage-toolbar-action>li>a:active,
-.IndexPage-toolbar-action>li>a:focus {
+.IndexPage-toolbar-view>li>a:active,
+.IndexPage-toolbar-view>li>a:focus {
   background: #d8d8d8;
 }
 
-.IndexPage-toolbar-action>li:first-child>a {
+.IndexPage-toolbar-view>li:first-child>a {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
 
-.IndexPage-toolbar-action>li:last-child>a {
+.IndexPage-toolbar-view>li:last-child>a {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -252,8 +254,7 @@
 
 .IndexPage-toolbar {
   display: flex;
-  justify-content: end;
-  margin-right: -15px;
+  margin: 15px;
 }
 
 .IndexPage {
@@ -364,4 +365,25 @@
 .Dropdown-menu>.active {
   border-right: 3px solid #1c5d99;
   background: #f1f2f3;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.DiscussionListItem-title {
+  color: #3b3b3b !important;
+}
+
+.author-link {
+  font-size: 10px;
+  p {
+    margin: 0 0 1px !important;
+  }
+
+  .Avatar {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+  }
 }

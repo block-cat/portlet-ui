@@ -69,7 +69,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
                 m('label', app.translator.trans('block-cat-default.admin.settings.title')),
 
                 Object.keys(this.vasia_settings).map((key) => {
-                  if (key === 'button_3d_new' || key === 'sideNav_shadow') {
+                  if (key === 'button_3d_new' || key === 'sideNav_shadow' || key === 'buttons_votes_answers_views' || key === 'view_tags' || key === 'view_hero') {
                     return [
                       !this.settingStates.hideDiscussionMenu ? // check if 'discussionMenu' is not selected
                         m('.Form-group', [ // controlsButton and scrubberDiv
@@ -168,7 +168,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
                   ];
                 }),
 
-                
+
 
               ]), // End Settings Column
 

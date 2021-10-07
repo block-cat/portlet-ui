@@ -67,6 +67,8 @@ export default function () {
         } else {
             displayName = "anonim";
         }
+        const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
+
         return (
             <div {...attrs}>
                 {controls.length
@@ -104,22 +106,37 @@ export default function () {
                             <Link className="" href={user ? app.route.user(user) : '#'}>
                                 {avatar(user, { title: '' })}
                             </Link>
-                        </div> */}
+                        </div> */
 
-                        <div className="DiscussionListItem-options-blocks">
-                            <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
-                            <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
-                        </div>
+                        }
 
-                        <div className="DiscussionListItem-options-blocks">
-                            <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
-                            <p className="">{app.translator.trans('block-cat-default.forum.answers')}</p>
-                        </div>
+                        {
+                            vasiaSettings.buttons_votes_answers_views ?
+                                <div className="DiscussionListItem-options-blocks">
+                                    <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
+                                    <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
+                                </div> : ""
+                        }
+                        {
+                            vasiaSettings.buttons_votes_answers_views ?
+                                <div className="DiscussionListItem-options-blocks">
+                                    <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
+                                    <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>
+                                </div> : ""
+                        }
+                        {
+                            vasiaSettings.buttons_votes_answers_views ?
+                                <div className="DiscussionListItem-options-blocks">
+                                    <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
+                                    <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
+                                </div> : ""
+                        }
 
-                        <div className="DiscussionListItem-options-blocks">
-                            <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
-                            <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
-                        </div>
+
+
+
+
+
 
                     </Link>
 
@@ -130,7 +147,7 @@ export default function () {
 
                         <ul className="DiscussionListItem-info">{listItems(this.infoItems().toArray())[listItems(this.infoItems().toArray()).length - 1]}</ul>
                         <div className="DiscussionListItem_tags_and_author">
-                            <ul className="DiscussionListItem-info-tags">{tags}</ul>
+                            {vasiaSettings.view_tags ? <ul className="DiscussionListItem-info-tags">{tags}</ul> : ""}
                             {/* <div className="div_button_citeste_mai_mult">
                                 <button className="button_citeste_mai_mult">{app.translator.trans('block-cat-default.forum.button_citeste_mai_mult')}</button>
                             </div> */}

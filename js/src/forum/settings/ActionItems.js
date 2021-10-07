@@ -10,10 +10,6 @@ export default function () {
         if (items.has('sort')) {
             items.remove('sort');
         }
-    })
-
-    extend(IndexPage.prototype, 'actionItems', function (items) {
-
         items.add(
             'Noi',
             LinkButton.component({
@@ -35,6 +31,11 @@ export default function () {
                 app.translator.trans('block-cat-default.forum.sort_button_4')
             )
         );
+    })
+
+    extend(IndexPage.prototype, 'actionItems', function (items) {
+
+        
 
 
 
