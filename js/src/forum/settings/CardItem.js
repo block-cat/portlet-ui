@@ -100,45 +100,33 @@ export default function () {
                         </Link>
                     </Tooltip> */}
 
-                    <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
+                    {vasiaSettings.buttons_votes_comments_views ?
+                        <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
 
-                        {/* <div className="DiscussionListItem-options-blocks">
+                            {/* <div className="DiscussionListItem-options-blocks">
                             <Link className="" href={user ? app.route.user(user) : '#'}>
                                 {avatar(user, { title: '' })}
                             </Link>
                         </div> */
 
-                        }
-
-                        {
-                            vasiaSettings.buttons_votes_answers_views ?
-                                <div className="DiscussionListItem-options-blocks">
-                                    <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
-                                    <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
-                                </div> : ""
-                        }
-                        {
-                            vasiaSettings.buttons_votes_answers_views ?
-                                <div className="DiscussionListItem-options-blocks">
-                                    <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
-                                    <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>
-                                </div> : ""
-                        }
-                        {
-                            vasiaSettings.buttons_votes_answers_views ?
-                                <div className="DiscussionListItem-options-blocks">
-                                    <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
-                                    <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
-                                </div> : ""
-                        }
+                            }
 
 
+                            <div className="DiscussionListItem-options-blocks">
+                                <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
+                                <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
+                            </div>
 
-
-
-
-
-                    </Link>
+                            <div className="DiscussionListItem-options-blocks">
+                                <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
+                                <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>
+                            </div>
+                            <div className="DiscussionListItem-options-blocks">
+                                <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
+                                <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
+                            </div>
+                        </Link>
+                        : ""}
 
                     <ul className="DiscussionListItem-badges badges">{listItems(discussion.badges().toArray())}</ul>
 

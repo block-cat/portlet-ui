@@ -65,6 +65,6 @@ block-cat-default:
       button_3d_new: "Button 3d view"
       button_3d_new_help_text: "Button 3d view enabled"
       sideNav_shadow: "SideNav  Shadow"
-      buttons_votes_answers_views: "buttons votes answers views"
+      buttons_votes_comments_views: "Buttons (votes, comments, views)"
       view_tags: "View Tags"
       view_hero: "View Hero"
