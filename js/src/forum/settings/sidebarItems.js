@@ -9,6 +9,26 @@ export default function () {
 
     const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
 
+
+
+    let inputs = document.getElementsByClassName("FormControl");
+    if (inputs != undefined) {
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].classList.add("shadow-sm");
+        inputs[i].classList.add("border-gray-300");
+        inputs[i].classList.add("rounded-lg");
+        inputs[i].classList.add("py-2");
+        inputs[i].classList.add("px-3");
+        inputs[i].classList.add("focus:ring-2");
+        inputs[i].classList.add("focus:ring-blue-200");
+        inputs[i].classList.add("focus:border-blue-400");
+        /* inputs[i].classList.remove("FormControl"); */
+      }
+    }
+
+
+
+
     if (vasiaSettings.button_3d_new) {
       let button_new = document.getElementsByClassName("item-newDiscussion")[0];
       if (button_new != undefined) {
