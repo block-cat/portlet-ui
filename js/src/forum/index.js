@@ -15,6 +15,10 @@ import changePaths from './settings/changePaths';
 import sidebarItems from './settings/sidebarItems.js';
 import CardItem from './settings/CardItem.js';
 import ActionItems from './settings/ActionItems.js';
+// added by BlockCat
+import addArticleModal from './settings/addArticleModal';
+import addReplyButtonModal from './settings/addReplyButtonModal';
+import removeArticleHeaderModal from './settings/removeArticleHeaderModal';
 
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
@@ -34,4 +38,8 @@ app.initializers.add('block-cat/portlet-ui', () => {
   sidebarItems();
   CardItem();
   ActionItems();
+  // added by BlockCat
+  addArticleModal();
+  removeArticleHeaderModal();
+  addReplyButtonModal();
 }, -20);
