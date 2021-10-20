@@ -8,6 +8,9 @@ import PostControls from 'flarum/utils/PostControls';
 import Link from 'flarum/common/components/Link';
 import username from 'flarum/common/helpers/username';
 import userOnline from 'flarum/common/helpers/userOnline';
+import PostUser from 'flarum/components/PostUser';
+import PostMeta from 'flarum/components/PostMeta';
+import PostEdited from 'flarum/components/PostEdited';
 
 export default class ArticleModal extends Modal {
   oninit(vnode) {
@@ -18,6 +21,8 @@ export default class ArticleModal extends Modal {
     this.includedPosts = [];
 
     this.firstPostControls = [];
+
+    this.headerItemsFirstComment = '';
 
     const params = this.requestParams();
     app.store.find('discussions', this.discussion.id(), params)
@@ -76,18 +81,30 @@ export default class ArticleModal extends Modal {
         
         if (post.number() == 1) {
           this.firstPostControls = PostControls.controls(post, this).toArray();
-          // console.log(this.firstPostControls);
+          
+          const items = new ItemList();
+          
+          items.add(
+            'user',
+            PostUser.component({
+              post,
+              oncardshow: () => {},
+              oncardhide: () => {},
+            }),
+            100
+          );
 
-          // const user = post.user();
-          // this.articleAuthor = (
-          // <div className="PostUser">
-          //     <h3>
-          //       <Link href={app.route.user(user)}>
-          //         {userOnline(user)}
-          //         {username(user)}
-          //       </Link>
-          //     </h3>
-          // </div>);
+          items.add(
+            'meta',
+            PostMeta.component({ post }),
+          );
+
+          if (post.isEdited() && !post.isHidden()) {
+            items.add('edited', PostEdited.component({ post }));
+          }
+
+          this.headerItemsFirstComment = items.toArray();
+          // console.log(this.headerItemsFirstComment);
           // m.redraw();
         }
 
@@ -126,9 +143,13 @@ export default class ArticleModal extends Modal {
     });
 
     // console.log(this.firstPostControls);
+    // console.log(this.headerItemsFirstComment);
 
     return [
       <nav className="DiscussionPage-nav">
+        <header className="Post-header">
+          <ul>{listItems(this.headerItemsFirstComment)}</ul>
+        </header>
         <ul>{listItems(this.articleItems().toArray())}</ul>
       </nav>,
       <div className="DiscussionPage-stream">
