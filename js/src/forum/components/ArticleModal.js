@@ -8,6 +8,8 @@ import PostControls from 'flarum/utils/PostControls';
 import PostUser from 'flarum/components/PostUser';
 import PostMeta from 'flarum/components/PostMeta';
 import PostEdited from 'flarum/components/PostEdited';
+import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
+import { size } from "lodash";
 
 export default class ArticleModal extends Modal {
   oninit(vnode) {
@@ -148,22 +150,26 @@ export default class ArticleModal extends Modal {
       );
     });
 
-    // console.log(this.firstPostControls);
+    // console.log(items);
     // console.log(this.headerItemsFirstComment);
 
     return [
-      <nav className="DiscussionPage-nav">
-        <header className="Post-header">
-          <ul>{listItems(this.headerItemsFirstComment)}</ul>
-        </header>
-        <ul>{listItems(this.articleItems().toArray())}</ul>
-      </nav>,
-      <div className="DiscussionPage-stream">
-        <div className="Modal-header ArticleTitle">
-          <h3 className="App-titleControl App-titleControl--text">{this.discussion.title()}</h3>
+      items.length !== 0 ? [
+        <nav className="DiscussionPage-nav">
+          <header className="Post-header">
+            <ul>{listItems(this.headerItemsFirstComment)}</ul>
+          </header>
+          <ul>{listItems(this.articleItems().toArray())}</ul>
+        </nav>,
+        <div className="DiscussionPage-stream">
+          <div className="Modal-header ArticleTitle">
+            <h3 className="App-titleControl App-titleControl--text">{this.discussion.title()}</h3>
+          </div>
+            <div className="PostStream">{items}</div>
         </div>
-        <div className="PostStream">{items}</div>
-      </div>
+      ] : (
+        <LoadingIndicator size='large' />
+      )
     ]
   }
 
