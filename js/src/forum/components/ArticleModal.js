@@ -5,9 +5,6 @@ import SplitDropdown from 'flarum/common/components/SplitDropdown';
 import DiscussionControls from 'flarum/utils/DiscussionControls';
 import listItems from 'flarum/common/helpers/listItems';
 import PostControls from 'flarum/utils/PostControls';
-import Link from 'flarum/common/components/Link';
-import username from 'flarum/common/helpers/username';
-import userOnline from 'flarum/common/helpers/userOnline';
 import PostUser from 'flarum/components/PostUser';
 import PostMeta from 'flarum/components/PostMeta';
 import PostEdited from 'flarum/components/PostEdited';
@@ -64,6 +61,7 @@ export default class ArticleModal extends Modal {
   }
 
   content() {
+    console.log(app);
     let lastTime;
     // console.log(this.discussion);
     // console.log(this.includedPosts);
@@ -81,18 +79,27 @@ export default class ArticleModal extends Modal {
         
         if (post.number() == 1) {
           this.firstPostControls = PostControls.controls(post, this).toArray();
-          
+          const guestUsername = post.attribute('guest_username');
           const items = new ItemList();
           
-          items.add(
-            'user',
-            PostUser.component({
-              post,
-              oncardshow: () => {},
-              oncardhide: () => {},
-            }),
-            100
-          );
+          if (!guestUsername) {
+            items.add(
+              'user',
+              PostUser.component({
+                post,
+                oncardshow: () => {},
+                oncardhide: () => {},
+              }),
+              100
+            );
+          } else {
+            // code like from guest-posting
+            items.add('guest-user', m('.PostUser', [
+              m('h3', [
+                  m('span.username', guestUsername),
+              ]),
+            ]), 100);
+          }
 
           items.add(
             'meta',
@@ -104,7 +111,7 @@ export default class ArticleModal extends Modal {
           }
 
           this.headerItemsFirstComment = items.toArray();
-          // console.log(this.headerItemsFirstComment);
+          // console.log(content.dom);
           // m.redraw();
         }
 

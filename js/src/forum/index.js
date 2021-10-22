@@ -19,6 +19,7 @@ import ActionItems from './settings/ActionItems.js';
 import addArticleModal from './settings/addArticleModal';
 import addReplyButtonModal from './settings/addReplyButtonModal';
 import removeArticleHeaderModal from './settings/removeArticleHeaderModal';
+import removeControlsModal from './settings/removeControlsModal';
 
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
@@ -42,4 +43,5 @@ app.initializers.add('block-cat/portlet-ui', () => {
   addArticleModal();
   removeArticleHeaderModal();
   addReplyButtonModal();
+  removeControlsModal();
 }, -20);
