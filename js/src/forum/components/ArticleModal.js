@@ -61,9 +61,8 @@ export default class ArticleModal extends Modal {
   }
 
   content() {
-    console.log(app);
     let lastTime;
-    // console.log(this.discussion);
+    // console.log(app.composer);
     // console.log(this.includedPosts);
     const postIds = this.discussion.postIds();
 

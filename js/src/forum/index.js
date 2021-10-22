@@ -20,6 +20,7 @@ import addArticleModal from './settings/addArticleModal';
 import addReplyButtonModal from './settings/addReplyButtonModal';
 import removeArticleHeaderModal from './settings/removeArticleHeaderModal';
 import removeControlsModal from './settings/removeControlsModal';
+import editorAbove from './settings/editorAbove';
 
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
@@ -44,4 +45,5 @@ app.initializers.add('block-cat/portlet-ui', () => {
   removeArticleHeaderModal();
   addReplyButtonModal();
   removeControlsModal();
+  editorAbove();
 }, -20);
