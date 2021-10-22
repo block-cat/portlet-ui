@@ -2,6 +2,7 @@ import Modal from "flarum/components/Modal";
 import ItemList from 'flarum/utils/ItemList';
 import PostLoading from 'flarum/components/LoadingPost';
 import SplitDropdown from 'flarum/common/components/SplitDropdown';
+import Button from 'flarum/common/components/Button';
 import DiscussionControls from 'flarum/utils/DiscussionControls';
 import listItems from 'flarum/common/helpers/listItems';
 import PostControls from 'flarum/utils/PostControls';
@@ -9,7 +10,7 @@ import PostUser from 'flarum/components/PostUser';
 import PostMeta from 'flarum/components/PostMeta';
 import PostEdited from 'flarum/components/PostEdited';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
-import { size } from "lodash";
+import Separator from 'flarum/common/components/Separator';
 
 export default class ArticleModal extends Modal {
   oninit(vnode) {
@@ -155,11 +156,20 @@ export default class ArticleModal extends Modal {
 
     return [
       items.length !== 0 ? [
-        <nav className="DiscussionPage-nav">
+        <nav className="DiscussionPage-nav rightMenu">
           <header className="Post-header">
             <ul>{listItems(this.headerItemsFirstComment)}</ul>
           </header>
-          <ul>{listItems(this.articleItems().toArray())}</ul>
+          <ul>
+            <li className="controlsGroup">Article Controls</li>
+            {listItems(this.articleItems().toArray())}
+          </ul>
+          <ul>
+            {this.firstPostControls.length !== 0 ? (
+              <li className="controlsGroup">First Comment Controls</li>
+            ) : ''}
+            {listItems(this.commentItems().toArray())}
+          </ul>
         </nav>,
         <div className="DiscussionPage-stream">
           <div className="Modal-header ArticleTitle">
@@ -200,32 +210,54 @@ export default class ArticleModal extends Modal {
    articleItems() {
     const items = new ItemList();
 
-    items.add(
-      'articleControls',
-      SplitDropdown.component(
-        {
-          icon: 'fas fa-ellipsis-v',
-          className: 'App-primaryControl',
-          buttonClassName: 'Button--primary',
-          accessibleToggleLabel: app.translator.trans('core.forum.discussion_controls.toggle_dropdown_accessible_label'),
-        },
-        DiscussionControls.controls(this.discussion, this).toArray()
-      )
-    );
+    let controls = DiscussionControls.controls(this.discussion, this);//.toArray();
+    controls.items.reply.priority = 110;
+    try {
+      controls.items.rename.priority = 100;
+    } catch {}
+    controls = controls.toArray();
+
+    controls.map((control) => {
+      if (!control.itemName.includes("Separator")) {
+        items.add(
+          control.itemName,
+          Button.component({
+            icon: control.attrs.icon,
+            onclick: control.attrs.onclick,
+            className: 'Button Button--secondary',
+          },control.children),
+        );
+      }
+      
+      // if (control.itemName.includes("Separator")) {
+      //   items.add(control.itemName, Separator.component());
+      // }
+    });
+
+    return items;
+  }
+
+  /**
+   * Build an item list for the contents of the sidebar.
+   *
+   * @return {ItemList}
+   */
+   commentItems() {
+    const items = new ItemList();
 
     if (this.firstPostControls.length !== 0) {
-      items.add(
-        'commentControls',
-        SplitDropdown.component(
-          {
-            icon: 'fas fa-ellipsis-v',
-            className: 'App-primaryControl',
-            buttonClassName: 'Button--secondary',
-            accessibleToggleLabel: app.translator.trans('core.forum.discussion_controls.toggle_dropdown_accessible_label'),
-          },
-          this.firstPostControls
-        )
-      );
+      this.firstPostControls.map((control) => {
+        if (!control.itemName.includes("Separator")) {
+          items.add(
+            control.itemName,
+            Button.component({
+              icon: control.attrs.icon,
+              onclick: control.attrs.onclick,
+              className: 'Button Button--secondary',
+            },control.children),
+          );
+        }
+      });
     }
 
     return items;

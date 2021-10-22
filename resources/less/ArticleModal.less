@@ -1,9 +1,25 @@
 .ArticleModal {
   max-width: 800px;
+
+  .EventPost {
+    margin-left: 20px;
+  }
+
+  .Post {
+    padding-left: 50px;
+  }
 }
 
-.ArticleModal .Post {
-  padding-left: 50px;
+.ArticleModal .rightMenu{
+  margin-right: 50px;
+  > ul {
+    position: inherit;
+  }
+
+  .controlsGroup {
+    color: #667c99;
+    font-weight: 700;
+  }
 }
 
 .ArticleModal {
@@ -16,6 +32,7 @@
   padding: 0;
 }
 
+// Editor Above
 #modal > .ModalManager.newEditor {
   z-index: 1000;
 }
