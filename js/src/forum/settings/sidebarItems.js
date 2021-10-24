@@ -27,7 +27,7 @@ export default function () {
     }
 
 
-
+    
 
     if (vasiaSettings.button_3d_new) {
       let button_new = document.getElementsByClassName("item-newDiscussion")[0];

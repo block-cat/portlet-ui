@@ -1,6 +1,7 @@
 import app from 'flarum/common/app';
 import { extend, override } from 'flarum/extend';
 import DiscussionListItem from 'flarum/components/DiscussionListItem';
+import DiscussionPage from 'flarum/components/DiscussionPage';
 import DiscussionControls from 'flarum/utils/DiscussionControls';
 import Dropdown from 'flarum/components/Dropdown';
 import icon from 'flarum/helpers/icon';
@@ -15,10 +16,33 @@ import abbreviateNumber from 'flarum/utils/abbreviateNumber';
 import { escapeRegExp } from 'lodash-es';
 export default function () {
 
-    /* extend(DiscussionListItem.prototype, 'view', function (items) {
-        let elem = items.children[items.children.length - 1];
-        console.log(elem);
-    }) */
+    extend(DiscussionPage.prototype, 'view', function (items) {
+
+        let iframe_pdf = document.getElementsByClassName("iframe_pdf");
+        if (iframe_pdf.length > 0) {
+            for (let i = 0; i < iframe_pdf.length; i++) {
+                for (let j = 0; j < iframe_pdf[i].attributes.length; j++) {
+                    let text = iframe_pdf[i].innerHTML;
+
+                    var from = text.search('<a href="');
+                    from += 9;
+                    var to = text.length;
+                    var new_text = text.substring(from, to);
+
+                    var from2 = 0;
+                    var to2 = new_text.search('.pdf');
+                    to2 += 4;
+                    var new_text2 = new_text.substring(from2, to2);
+
+                    if (iframe_pdf[i].attributes[j].name == "src") {
+                        if (iframe_pdf[i].attributes[j].value == "")
+                            iframe_pdf[i].attributes[j].value = new_text2;
+                    }
+                }
+            }
+        }
+
+    })
 
     override(DiscussionListItem.prototype, 'view', function () {
         const discussion = this.attrs.discussion;
