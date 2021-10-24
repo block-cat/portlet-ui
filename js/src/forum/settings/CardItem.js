@@ -156,10 +156,14 @@ export default function () {
 
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-main">
                         <h3 className="DiscussionListItem-title">{highlight(discussion.title(), this.highlightRegExp)}</h3>
+                        {vasiaSettings.view_tags && !vasiaSettings.tags_bottom ? <ul className="DiscussionListItem-info-tags">{tags}</ul> : ""}
 
-                        <ul className="DiscussionListItem-info">{listItems(this.infoItems().toArray())[listItems(this.infoItems().toArray()).length - 1]}</ul>
+                        <ul className="DiscussionListItem-info">
+                            {listItems(this.infoItems().toArray())[listItems(this.infoItems().toArray()).length - 1]}
+                        </ul>
+
                         <div className="DiscussionListItem_tags_and_author">
-                            {vasiaSettings.view_tags ? <ul className="DiscussionListItem-info-tags">{tags}</ul> : ""}
+                            {vasiaSettings.view_tags && vasiaSettings.tags_bottom ? <ul className="DiscussionListItem-info-tags">{tags}</ul> : ""}
                             {/* <div className="div_button_citeste_mai_mult">
                                 <button className="button_citeste_mai_mult">{app.translator.trans('block-cat-default.forum.button_citeste_mai_mult')}</button>
                             </div> */}
@@ -175,7 +179,6 @@ export default function () {
                             </div>
                         </div>
                     </Link>
-
                     <span
                         tabindex="0"
                         role="button"

@@ -27,7 +27,7 @@ export default function () {
     }
 
 
-    
+
 
     if (vasiaSettings.button_3d_new) {
       let button_new = document.getElementsByClassName("item-newDiscussion")[0];
@@ -48,6 +48,11 @@ export default function () {
     let items1 = this.navItems(this).toArray();
 
     for (let i = 0; i < items1.length; i++) {
+      if (vasiaSettings.button_etichete == 0) {
+        if (items1[i].itemName === "tags") {
+          items1.splice(i, 1);
+        }
+      }
       if (items1[i].itemName === "separator") {
         items1.splice(i, items1.length--);
       }
@@ -78,6 +83,14 @@ export default function () {
       let view_hero = document.getElementsByClassName("Hero")[0];
       if (view_hero != undefined) {
         view_hero.classList.add("d-none");
+      }
+    }
+
+    if (vasiaSettings.sidenav_fixed) {
+      let sidenav_fixed = document.getElementsByClassName("sideNav")[0];
+      if (sidenav_fixed != undefined) {
+        sidenav_fixed = sidenav_fixed.getElementsByTagName("ul")[0];
+        sidenav_fixed.classList.add("sidenav_fixed");
       }
     }
 

@@ -69,10 +69,25 @@ export default class DefaultSettingsPage extends ExtensionPage {
                 m('label', app.translator.trans('block-cat-default.admin.settings.title')),
 
                 Object.keys(this.vasia_settings).map((key) => {
-                  if (key === 'button_3d_new' || key === 'sideNav_shadow' || key === 'buttons_votes_comments_views' || key === 'view_tags' || key === 'view_hero') {
+                  if (key === 'button_3d_new' || key === 'sideNav_shadow' || key === 'buttons_votes_comments_views' || key === 'view_tags' || key === 'view_hero' || key === 'button_etichete' || key === 'sidenav_fixed' || key === 'button_adauga_right' || key === 'remove_additional_space' || key === 'show_item_sort' || key === 'add_input_hover_style') {
                     return [
                       !this.settingStates.hideDiscussionMenu ? // check if 'discussionMenu' is not selected
                         m('.Form-group', [ // controlsButton and scrubberDiv
+                          Switch.component({
+                            state: this.vasia_settings[key] || false,
+                            onchange: () => {
+                              this.vasia_settings[key] ^= true;
+                              this.modified = true;
+                            }
+                          },
+                            m('li', app.translator.trans(`block-cat-default.admin.vasia_settings.${key}`))
+                          ),
+                        ]) : ''
+                    ];
+                  } else if ((key === 'tags_bottom' && this.vasia_settings['view_tags']) || (key === 'modify_item_sort' && this.vasia_settings['show_item_sort'])) {
+                    return [
+                      !this.settingStates.hideDiscussionMenu ? // check if 'discussionMenu' is not selected
+                        m('.Form-group .Form-group-children', [ // controlsButton and scrubberDiv
                           Switch.component({
                             state: this.vasia_settings[key] || false,
                             onchange: () => {
