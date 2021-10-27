@@ -14,19 +14,20 @@ export default function () {
     let inputs = document.getElementsByClassName("FormControl");
     if (inputs != undefined) {
       for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].type == "search") { break; };
         inputs[i].classList.add("shadow-sm");
         inputs[i].classList.add("border-gray-300");
         inputs[i].classList.add("rounded-lg");
         inputs[i].classList.add("py-2");
         inputs[i].classList.add("px-3");
-        inputs[i].classList.add("focus:ring-2");
-        inputs[i].classList.add("focus:ring-blue-200");
-        inputs[i].classList.add("focus:border-blue-400");
+        if (vasiaSettings.add_input_hover_style) {
+          inputs[i].classList.add("focus:ring-2");
+          inputs[i].classList.add("focus:ring-blue-200");
+          inputs[i].classList.add("focus:border-blue-400");
+        }
         /* inputs[i].classList.remove("FormControl"); */
       }
     }
-
-
 
 
     if (vasiaSettings.button_3d_new) {

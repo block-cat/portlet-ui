@@ -8,30 +8,40 @@ export default function () {
 
 
     extend(IndexPage.prototype, 'viewItems', function (items) {
-        if (items.has('sort')) {
-            items.remove('sort');
-        }
-        items.add(
-            'Noi',
-            LinkButton.component({
-                title: "Noi",
-                className: 'Button Button--primary',
-                href: '?sort=newest',
-            },
-                app.translator.trans('block-cat-default.forum.sort_button_3')
-            )
-        );
+        const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
 
-        items.add(
-            'Vechi',
-            LinkButton.component({
-                title: "Vechi",
-                className: 'Button Button--primary',
-                href: '?sort=oldest',
-            },
-                app.translator.trans('block-cat-default.forum.sort_button_4')
-            )
-        );
+        if (vasiaSettings.show_item_sort) {
+            if (vasiaSettings.modify_item_sort) {
+                if (items.has('sort')) {
+                    items.remove('sort');
+                }
+                items.add(
+                    'Noi',
+                    LinkButton.component({
+                        title: "Noi",
+                        className: 'Button Button--primary',
+                        href: '?sort=newest',
+                    },
+                        app.translator.trans('block-cat-default.forum.sort_button_3')
+                    )
+                );
+
+                items.add(
+                    'Vechi',
+                    LinkButton.component({
+                        title: "Vechi",
+                        className: 'Button Button--primary',
+                        href: '?sort=oldest',
+                    },
+                        app.translator.trans('block-cat-default.forum.sort_button_4')
+                    )
+                );
+            }
+        } else {
+            if (items.has('sort')) {
+                items.remove('sort');
+            }
+        }
     })
 
     extend(IndexPage.prototype, 'sidebarItems', function (items) {

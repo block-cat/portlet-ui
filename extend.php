@@ -30,7 +30,7 @@ return [
         ->configure(function (Configurator $config) {
             $config->BBCodes->addCustom(
                 '[pdf]{TEXT}[/pdf]',
-                '<iframe src="" style="width:100%; height:500px;" class="iframe_pdf" frameborder="0">{TEXT}</iframe>'
+                '<iframe src="" style="width:100%; height:500px;" class="iframe_pdf" frameborder="0">{TEXT}</iframe><span class="span_pdf">{TEXT}</span>'
             );
             $config->BBCodes->addFromRepository('ACRONYM');
             $config->BBCodes->addFromRepository('ALIGN');

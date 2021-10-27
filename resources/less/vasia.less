@@ -41,6 +41,12 @@
   }
 
   @media (max-width: 768px) {
+
+    .item-nav_Navigation .Button-caret,
+    .item-nav_Categories .Button-caret {
+      display: none;
+    }
+
     .DiscussionList {
       margin: 0px;
     }
@@ -74,14 +80,13 @@
     border-radius: 14px; */
 .DiscussionListItem {
   margin-left: 0px;
-  border-bottom: 1px solid #eff0f1;
   padding-bottom: 15px;
 }
 
-.DiscussionList-discussions>li {
+/* .DiscussionList-discussions>li {
   margin-top: 10px;
   margin-bottom: 10px;
-}
+} */
 
 .item-tags {
   position: relative !important;
@@ -195,6 +200,10 @@
   .DiscussionListItem-content {
     width: 100%;
     display: flex !important;
+
+  }
+
+  .D_remove_additional_space {
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -202,8 +211,8 @@
 
 @media (max-width: 767px) {
   .DiscussionListItem-content {
-    padding-left: 8% !important;
-    padding-right: 8% !important;
+    padding-left: 0% !important;
+    padding-right: 0% !important;
   }
 
   .DiscussionListItem-options {
@@ -274,17 +283,23 @@
     /* box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.12); */
     border-radius: 0rem;
     padding: 10px;
-    margin-bottom: 18px;
-    border: 1px solid #fff;
-    border-top: 1px solid #d6d9dc;
     transition: .3s;
   }
 
   .DiscussionListItem:hover {
     background: rgba(255, 255, 255, 1);
-    border: 1px solid #d6d9dc;
+
     border-radius: 4px;
     padding: 10px;
+  }
+
+  .D-border {
+    border: 1px solid #fff;
+    border-top: 1px solid #d6d9dc;
+  }
+
+  .D-border:hover {
+    border: 1px solid #d6d9dc;
   }
 
   .button_citeste_mai_mult {
@@ -313,25 +328,27 @@
     -webkit-perspective: 200px;
   }
 
-  .item-newDiscussion-stackoverflow .Button {
-    width: auto !important;
-    background: #0a95ff !important;
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-    position: relative;
-    display: inline-block;
-    padding: .8em;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    background-color: transparent;
-    outline: none;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: normal;
-    line-height: 1.15384615;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    user-select: none;
+  @media (min-width: 767px) {
+    .item-newDiscussion-stackoverflow .Button {
+      width: auto !important;
+      background: #0a95ff !important;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+      position: relative;
+      display: inline-block;
+      padding: .8em;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background-color: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 1.15384615;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
   }
 
   .item-newDiscussion_3d {
@@ -408,6 +425,7 @@
   padding-bottom: .5rem !important;
   padding-left: .75rem !important;
   padding-right: .75rem !important;
+  border-radius: 4px;
 }
 
 .rounded-lg {
@@ -443,4 +461,8 @@
 
 .Post-body {
   overflow: visible !important;
+}
+
+.Search-input>input {
+  border: 0px !important;
 }

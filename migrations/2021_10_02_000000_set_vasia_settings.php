@@ -17,6 +17,8 @@ $vasia_settings = [
     'show_item_sort' => 1,
     'modify_item_sort' => 1,
     'add_input_hover_style' => 1,
+    'display_pdf_files' => 1,
+    'add_borders' => 1,
 ];
 
 // save above settings on database in 'settings' table

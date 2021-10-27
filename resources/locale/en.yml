@@ -76,3 +76,5 @@ block-cat-default:
       show_item_sort: "Show item-sort (Off/On)"
       modify_item_sort: "Modify item-sort (Off/On)"
       add_input_hover_style: "Add input hover style"
+      display_pdf_files: "Display Pdf files"
+      add_borders: "Add borders"
