@@ -79,3 +79,6 @@ block-cat-default:
       add_input_hover_style: "Add input hover style"
       display_pdf_files: "Display Pdf files"
       add_borders: "Add borders"
+      title_font_size: "Title font-size"
+      item_excerpt_font_size: "Item-except font-size"
+      item_excerpt_color: "Item-except color"

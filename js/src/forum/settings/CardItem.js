@@ -173,10 +173,10 @@ export default function () {
                     <ul className="DiscussionListItem-badges badges">{listItems(discussion.badges().toArray())}</ul>
 
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-main">
-                        <h3 className="DiscussionListItem-title">{highlight(discussion.title(), this.highlightRegExp)}</h3>
+                        <h3 className="DiscussionListItem-title" style={"font-size: " + vasiaSettings.title_font_size + "px !important;"}>{highlight(discussion.title(), this.highlightRegExp)}</h3>
                         {vasiaSettings.view_tags && !vasiaSettings.tags_bottom ? <ul className="DiscussionListItem-info-tags">{tags}</ul> : ""}
 
-                        <ul className="DiscussionListItem-info">
+                        <ul className="DiscussionListItem-info" style={"font-size: " + vasiaSettings.item_excerpt_font_size + "px !important; color: " + vasiaSettings.item_excerpt_color + " !important;"}>
                             {listItems(this.infoItems().toArray())[listItems(this.infoItems().toArray()).length - 1]}
                         </ul>
 

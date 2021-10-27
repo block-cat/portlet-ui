@@ -19,6 +19,9 @@ $vasia_settings = [
     'add_input_hover_style' => 1,
     'display_pdf_files' => 1,
     'add_borders' => 1,
+    'title_font_size' => "18",
+    'item_excerpt_font_size' => "14",
+    'item_excerpt_color' => "#000",
 ];
 
 // save above settings on database in 'settings' table

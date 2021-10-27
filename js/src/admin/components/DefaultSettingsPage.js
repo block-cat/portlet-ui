@@ -103,6 +103,26 @@ export default class DefaultSettingsPage extends ExtensionPage {
                         ]) : ''
                     ];
                   }
+                  else if (key === 'title_font_size' || key === 'item_excerpt_font_size' || key === 'item_excerpt_color') {
+                    return [
+                      m('.Form-group .inline',
+                        // if icon exists this will be displayed realtime on page
+                        this.vasia_settings[key] !== "" ? icon(this.vasia_settings[key]) : '',
+                        this.vasia_settings[key] !== "" ? m('span', app.translator.trans(`block-cat-default.admin.vasia_settings.${key}`)) : '',
+                        m('input.FormControl', {
+                          type: 'text',
+                          placeholder: `block-cat-default.admin.vasia_settings.${key}`,
+                          value: this.vasia_settings[key],
+                          oninput: (e) => {
+                            this.vasia_settings[key] = e.target.value;
+                            this.modified = true;
+                          }
+                        })
+                      ),
+                    ]
+                  }
+
+
                 }),
                 !this.settingStates.hideMainPageMenu ? // check if 'mainPageMenu' is not selected
 
