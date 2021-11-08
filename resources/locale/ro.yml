@@ -5,6 +5,7 @@ block-cat-default:
     sort_button_2: "Cele mai citite"
     sort_button_3: "Cele mai noi"
     sort_button_4: "Cele mai vechi"
+    sort_button_5: "Trending"
     likes: "votes"
     comments: "comments"
     views: "views"
@@ -82,3 +83,5 @@ block-cat-default:
       title_font_size: "Title font-size"
       item_excerpt_font_size: "Item-except font-size"
       item_excerpt_color: "Item-except color"
+      rankings_button_header: "Rankings button in header"
+      author_bottom: "Post author bottom"

@@ -12,9 +12,10 @@ import removeTerminalPost from './settings/removeTerminalPost';
 import removeToolbar from './settings/removeToolbar';
 import changePaths from './settings/changePaths';
 //vasia
-import sidebarItems from './settings/sidebarItems.js';
-import CardItem from './settings/CardItem.js';
-import ActionItems from './settings/ActionItems.js';
+import sidebarItems from './ui/sidebarItems.js';
+import CardItem from './ui/CardItem.js';
+import ActionItems from './ui/ActionItems.js';
+import HeaderSec from './ui/HeaderSec.js';
 
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
@@ -34,4 +35,5 @@ app.initializers.add('block-cat/portlet-ui', () => {
   sidebarItems();
   CardItem();
   ActionItems();
+  HeaderSec();
 }, -20);

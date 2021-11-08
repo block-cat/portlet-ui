@@ -12,11 +12,52 @@ import avatar from 'flarum/helpers/avatar';
 import listItems from 'flarum/helpers/listItems';
 import highlight from 'flarum/helpers/highlight';
 import abbreviateNumber from 'flarum/utils/abbreviateNumber';
+import LinkButton from 'flarum/components/LinkButton';
+import DiscussionHero from 'flarum/components/DiscussionHero';
+import DiscussionListPane from 'flarum/components/DiscussionListPane';
+import PostStream from 'flarum/components/PostStream';
+import LoadingIndicator from 'flarum/components/LoadingIndicator';
+import Tooltip from 'flarum/common/components/Tooltip';
 
 import { escapeRegExp } from 'lodash-es';
 export default function () {
 
+
+
+    override(DiscussionPage.prototype, 'view', function () {
+        const discussion = this.discussion;
+
+        return (
+            <div className="DiscussionPage">
+                <DiscussionListPane state={app.discussions} />
+                <div className="DiscussionPage-discussion">
+                    {discussion ? (
+                        [
+                            DiscussionHero.component({ discussion }),
+                            <div className="container">
+                                <nav className="DiscussionPage-nav">
+                                    <ul>{listItems(this.sidebarItems().toArray())}</ul>
+                                </nav>
+                                <div className="DiscussionPage-stream">
+                                    {PostStream.component({
+                                        discussion,
+                                        stream: this.stream,
+                                        onPositionChange: this.positionChanged.bind(this),
+                                    })}
+                                </div>
+                            </div>,
+                        ]
+                    ) : (
+                        <LoadingIndicator />
+                    )}
+                </div>
+            </div>
+        );
+    }
+    )
+
     extend(DiscussionPage.prototype, 'view', function (items) {
+
         const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
         if (vasiaSettings.display_pdf_files) {
             let span_pdf = document.getElementsByClassName("span_pdf");
@@ -56,7 +97,7 @@ export default function () {
                 }
             }
         }
-    })
+    });
 
     override(DiscussionListItem.prototype, 'view', function () {
 
@@ -105,6 +146,9 @@ export default function () {
         let displayName;
         if (user != false) {
             displayName = user.data.attributes.displayName;
+            /* discussionCount = user.data.attributes.discussionCount;
+            commentCount = user.data.attributes.commentCount; */
+            console.log(user.data.attributes);
         } else {
             displayName = "anonim";
         }
@@ -133,43 +177,46 @@ export default function () {
                 </span>
 
                 <div className={'DiscussionListItem-content Slidable-content' + (isUnread ? ' unread' : '') + (isRead ? ' read' : '') + (vasiaSettings.remove_additional_space ? ' D_remove_additional_space' : '')}>
-                    {/* <Tooltip
-                        text={app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}
-                        position="right"
-                    >
-                        <Link className="DiscussionListItem-author" href={user ? app.route.user(user) : '#'}>
-                            {avatar(user, { title: '' })}
-                        </Link>
-                    </Tooltip> */}
+                    <div style="display: flex; flex-direction: column; margin-right: 15px;">
+                        {!vasiaSettings.author_bottom ?
+                            <Tooltip
+                                text={app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}
+                                position="right"
+                            >
+                                <Link className="DiscussionListItem-author author_top" href={user ? app.route.user(user) : '#'}>
+                                    {avatar(user, { title: '' })}
+                                </Link>
+                            </Tooltip>
+                            : ""}
 
-                    {vasiaSettings.buttons_votes_comments_views ?
-                        <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
+                        {vasiaSettings.buttons_votes_comments_views ?
+                            <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
 
-                            {/* <div className="DiscussionListItem-options-blocks">
+                                {/* <div className="DiscussionListItem-options-blocks">
                             <Link className="" href={user ? app.route.user(user) : '#'}>
                                 {avatar(user, { title: '' })}
                             </Link>
                         </div> */
 
-                            }
+                                }
 
 
-                            <div className="DiscussionListItem-options-blocks">
-                                <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
-                                <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
-                            </div>
+                                <div className="DiscussionListItem-options-blocks">
+                                    <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
+                                    <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
+                                </div>
 
-                            <div className="DiscussionListItem-options-blocks">
-                                <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
-                                <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>
-                            </div>
-                            <div className="DiscussionListItem-options-blocks">
-                                <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
-                                <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
-                            </div>
-                        </Link>
-                        : ""}
-
+                                <div className="DiscussionListItem-options-blocks">
+                                    <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
+                                    <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>
+                                </div>
+                                <div className="DiscussionListItem-options-blocks">
+                                    <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
+                                    <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
+                                </div>
+                            </Link>
+                            : ""}
+                    </div>
                     <ul className="DiscussionListItem-badges badges">{listItems(discussion.badges().toArray())}</ul>
 
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-main">
@@ -185,16 +232,21 @@ export default function () {
                             {/* <div className="div_button_citeste_mai_mult">
                                 <button className="button_citeste_mai_mult">{app.translator.trans('block-cat-default.forum.button_citeste_mai_mult')}</button>
                             </div> */}
-                            <div className="DiscussionListItem-options-author">
-                                <Link className="author-link" href={user ? app.route.user(user) : '#'}>
-                                    {avatar(user, { title: '' })}
-                                    <div>
-                                        <p>{displayName}
-                                        </p>
-                                        <p>{listItems(terminalPost)}</p>
-                                    </div>
-                                </Link>
-                            </div>
+                            {vasiaSettings.author_bottom ?
+                                <div className="DiscussionListItem-options-author">
+                                    <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
+                                        <p style="color: hsl(210,8%,45%);">{listItems(terminalPost)}</p>
+                                        <div style="display: flex;">
+                                            {avatar(user, { title: '' })}
+                                            <div>
+                                                <p style="font-size: 12px;">{displayName}
+                                                </p>
+                                                <p><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points} <i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                                : ""}
                         </div>
                     </Link>
                     <span

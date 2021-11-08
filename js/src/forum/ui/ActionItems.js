@@ -36,6 +36,17 @@ export default function () {
                         app.translator.trans('block-cat-default.forum.sort_button_4')
                     )
                 );
+
+                items.add(
+                    'Trending',
+                    LinkButton.component({
+                        title: "Trending",
+                        className: 'Button Button--primary',
+                        href: '?sort=hot',
+                    },
+                        app.translator.trans('block-cat-default.forum.sort_button_5')
+                    )
+                );
             }
         } else {
             if (items.has('sort')) {

@@ -49,15 +49,22 @@ export default function () {
     let items1 = this.navItems(this).toArray();
 
     for (let i = 0; i < items1.length; i++) {
+      if (vasiaSettings.rankings_button_header == 1) {
+        if (items1[i].itemName === "rankings") {
+          items1.splice(i, 1);
+        }
+      }
       if (vasiaSettings.button_etichete == 0) {
         if (items1[i].itemName === "tags") {
           items1.splice(i, 1);
         }
       }
+
       if (items1[i].itemName === "separator") {
         items1.splice(i, items1.length--);
       }
     }
+
     let items2 = this.navItems(this).toArray();
 
     for (let i = 0; i < items2.length; i++) {
