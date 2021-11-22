@@ -16,6 +16,7 @@ import sidebarItems from './ui/sidebarItems.js';
 import CardItem from './ui/CardItem.js';
 import ActionItems from './ui/ActionItems.js';
 import HeaderSec from './ui/HeaderSec.js';
+import Editor from './ui/Editor.js';
 
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
@@ -36,4 +37,5 @@ app.initializers.add('block-cat/portlet-ui', () => {
   CardItem();
   ActionItems();
   HeaderSec();
+  Editor();
 }, -20);

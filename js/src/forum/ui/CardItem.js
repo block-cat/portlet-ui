@@ -148,7 +148,7 @@ export default function () {
             displayName = user.data.attributes.displayName;
             /* discussionCount = user.data.attributes.discussionCount;
             commentCount = user.data.attributes.commentCount; */
-            console.log(user.data.attributes);
+            /* console.log(user.data.attributes); */
         } else {
             displayName = "anonim";
         }
