@@ -28,6 +28,10 @@ return [
         ->serializeToForum('block-cat.defaultRoutes', 'block-cat.default_routes'),
     (new Extend\Formatter)
         ->configure(function (Configurator $config) {
+            $config->BBCodes->addCustom(
+                '[pdf]{TEXT}[/pdf]',
+                '<iframe src="" style="width:100%; height:500px;" class="iframe_pdf" frameborder="0">{TEXT}</iframe><span class="span_pdf">{TEXT}</span>'
+            );
             $config->BBCodes->addFromRepository('ACRONYM');
             $config->BBCodes->addFromRepository('ALIGN');
             $config->BBCodes->addFromRepository('B');
