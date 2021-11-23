@@ -439,7 +439,7 @@
   }
 }
 
-.ComposerBody-header h3 input,
+/* .ComposerBody-header h3 input,
 .ComposerBody-header h3 input[disabled],
 .ComposerBody-header h3 input:focus,
 .TextEditor .TextEditor-editor {
@@ -448,7 +448,7 @@
   padding-left: .75rem !important;
   padding-right: .75rem !important;
   border-radius: 4px;
-}
+} */
 
 .rounded-lg {
   border-radius: .5rem !important;
@@ -507,9 +507,52 @@
   margin-right: 0px !important;
 }
 
+.Composer.fullScreen.minimized {
+  height: 48px !important;
+  background: #1c5d99;
+}
+
 .Composer.fullScreen {
   height: 100% !important;
+  transition: .5s;
+
+  .keyframes(fade-in; {
+      0% {
+        opacity: 0.3;
+        transform: translate(0px, 100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(0px, 0%);
+      }
+    }
+
+  );
+
+  .animation(fade-in .22s linear alternate)
 }
+
+.keyframes(@name; @arguments) {
+  @-moz-keyframes @name {
+    @arguments();
+  }
+
+  @-webkit-keyframes @name {
+    @arguments();
+  }
+
+  @keyframes @name {
+    @arguments();
+  }
+}
+
+.animation(@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+
 
 .ComposerBody-content {
   display: flex;
@@ -527,11 +570,96 @@
     background: #E4E4E4 !important;
     border: 0px !important;
     border-radius: 6px !important;
-    color: #444 !important;
-    padding: 10px !important;
+    color: #444444 !important;
+    padding: 14px !important;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .FormControl::placeholder {
+    color: rgba(68, 68, 68, .8) !important;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .placeholder,
+  .placeholder::before {
+    color: rgba(68, 68, 68, .8) !important;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .ComposerBody-editor {
+
+    .TextEditor {
+      display: flex;
+      flex-direction: column-reverse;
+      position: relative;
+    }
+
+    .TextEditor-editor {
+      max-height: 85vh;
+      margin-top: 70px !important;
+    }
+
+    .TextEditor-controls {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      background: white;
+      padding: 4px;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+
+      .item-submit {
+        display: none;
+      }
+
+      .fof-upload-button {
+        background: transparent;
+      }
+    }
   }
 }
 
 .ComposerBody-content-right {
   width: 30%;
+  padding-left: 20px;
+
+  .ComposerBody-avatar-right {
+    width: 64px;
+    height: 56px;
+    border-radius: 6px;
+    font-size: 32px;
+    line-height: 56px;
+    object-fit: cover;
+  }
+
+  .author {
+    display: flex;
+  }
+
+  .my_displa_name {
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .Button_publicare {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #1c5d99;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: .06rem;
+    font-size: 16px;
+    padding: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  }
 }

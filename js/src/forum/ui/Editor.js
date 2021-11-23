@@ -25,10 +25,9 @@ export default function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
         let title = this.headerItems().toArray();
         title.splice(0, 2);
+        let MyDisplayName = this.attrs.user.data.attributes.displayName;
         return (
             <div className={'ComposerBody ' + (this.attrs.className || '')} >
-                {avatar(this.attrs.user, { className: 'ComposerBody-avatar' })
-                }
                 <div className="ComposerBody-content">
                     <div className="ComposerBody-content-left">
                         <ul className="ComposerBody-header">{listItems(title)}</ul>
@@ -45,7 +44,10 @@ export default function () {
                             })}
                         </div>
                     </div>
-                    <div className="ComposerBody-content-right"></div>
+                    <div className="ComposerBody-content-right">
+                        <div className="author">{avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' })} <p className="my_displa_name">{MyDisplayName}</p></div>
+                        <div className="Button Button_publicare" onclick={this.onsubmit.bind(this)}>{this.attrs.submitLabel}</div>
+                    </div>
                 </div>
                 <LoadingIndicator display="unset" containerClassName={classList('ComposerBody-loading', this.loading && 'active')} size="large" />
             </div >
@@ -69,6 +71,8 @@ export default function () {
         const showIfMinimized = this.state.position === ComposerState.Position.MINIMIZED ? this.state.show.bind(this.state) : undefined;
 
         this.state.height = window.innerHeight + "px";
+
+        //this.state.position;
 
         let controlItems2 = this.controlItems().toArray();
         controlItems2.splice(1, 1);
