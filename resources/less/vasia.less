@@ -639,6 +639,37 @@
 
   .author {
     display: flex;
+    margin-bottom: 20px;
+  }
+
+  .ComposerBody-etichete {
+    .untagged {
+      border: 0px !important;
+      background: #e4edf6 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      font-weight: 500;
+      letter-spacing: 0.03rem;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .TagLabel.colored {
+      border: 0px !important;
+      background: #e4edf6 !important;
+      width: 100%;
+      text-align: center;
+      transition: .3s;
+
+      .TagLabel-text {
+        color: #668099 !important;
+      }
+    }
+
+    .TagLabel:hover {
+      background: rgba(38, 122, 201, .3) !important;
+    }
   }
 
   .my_displa_name {

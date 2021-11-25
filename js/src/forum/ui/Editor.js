@@ -25,6 +25,7 @@ export default function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
         let title = this.headerItems().toArray();
         title.splice(0, 2);
+        let etichete = this.headerItems().toArray();
         let MyDisplayName = this.attrs.user.data.attributes.displayName;
         return (
             <div className={'ComposerBody ' + (this.attrs.className || '')} >
@@ -46,6 +47,7 @@ export default function () {
                     </div>
                     <div className="ComposerBody-content-right">
                         <div className="author">{avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' })} <p className="my_displa_name">{MyDisplayName}</p></div>
+                        <ul className="ComposerBody-etichete">{listItems(etichete[1])}</ul>
                         <div className="Button Button_publicare" onclick={this.onsubmit.bind(this)}>{this.attrs.submitLabel}</div>
                     </div>
                 </div>
