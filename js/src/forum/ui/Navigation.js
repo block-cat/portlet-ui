@@ -19,11 +19,25 @@ export default function () {
 
         let index = IndexPage.prototype.sidebarItems();
 
-        console.log(index);
-
-
-
         const discussion = this.discussion;
+
+
+        if (discussion) {
+            const badges = discussion.badges().toArray();
+            console.log(badges);
+            if (badges.length) {
+                items.add('badges', <ul className="DiscussionHero-badges badges">{listItems(badges)}</ul>, 10);
+            }
+        }
+        /* let badges_tags;
+        if (discussion) {
+            const badges = discussion.badges().toArray();
+            console.log(discussion.badges().toArray());
+            if (badges.length) {
+                badges_tags = "<ul className='DiscussionHero-badges badges'>{listItems(badges)}</ul>";
+            }
+        } */
+
 
         return (
             <div className="DiscussionPage">
@@ -31,17 +45,21 @@ export default function () {
                 <div className="DiscussionPage-discussion">
                     {discussion ? (
                         [
-                            DiscussionHero.component({ discussion }),
+                            /* DiscussionHero.component({ discussion }), */
                             <div className="container">
                                 <div className="sideNavContainer">
                                     <div className="sideNav">
                                         <ul className="">{listItems(index.toArray())}</ul>
                                     </div>
-                                    <div>
+                                    <div style="width: 100%; padding-top: 30px;">
                                         <nav className="DiscussionPage-nav">
                                             <ul>{listItems(this.sidebarItems().toArray())}</ul>
                                         </nav>
                                         <div className="DiscussionPage-stream">
+                                            <div className="Hero_2">
+                                                {/* {badges_tags} */}
+                                                <h2 className="DiscussionHero-title">{discussion.title()}</h2>
+                                            </div>
                                             {PostStream.component({
                                                 discussion,
                                                 stream: this.stream,
