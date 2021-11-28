@@ -9,21 +9,28 @@
     position:fixed;
     z-index:2;
     top:52px;
-    // overflow:auto;
+    overflow:auto;
     width:auto;
     height:100%;
     padding-left:10px;
-    background:@body-bg;
-    border-right:1px solid fade(@hero-bg,98.5%);
+    background: @body-bg;
+    // border-right: 1px solid fade(@hero-bg,98.5%);
     margin-left: -15px;
+    border: 1px solid rgba(228,237,246,0.985);
+    margin-top: 15px !important;
+    border-radius: 3px;
   }
 
   .sideNavOffset{
-    margin-top:0!important;
+    margin-top:15px!important;
     min-width:0;
     padding:15px;
     box-sizing:border-box;
-    margin-left: 185px;
+    // margin-left: 185px;
+    margin-left: 215px;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid rgba(228,237,246,0.985);
   }
   
   a.titleFeed{font-weight:700}
@@ -93,6 +100,11 @@
   .DiscussionListItem-options-blocks{
     background:@body-bg;
     border:1px solid fade(@hero-bg,98.5%)
+  }
+
+
+  .IndexPage .container{
+    background-color: transparent;
   }
 
 }
