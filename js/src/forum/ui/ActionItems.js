@@ -38,13 +38,24 @@ export default function () {
                 );
 
                 items.add(
-                    'Trending',
+                    'Votate',
                     LinkButton.component({
-                        title: "Trending",
+                        title: "Votate",
                         className: 'Button Button--primary',
-                        href: '?sort=hot',
+                        href: '?sort=votes',
                     },
                         app.translator.trans('block-cat-default.forum.sort_button_5')
+                    )
+                );
+
+                items.add(
+                    'Vizualizate',
+                    LinkButton.component({
+                        title: "Vizualizate",
+                        className: 'Button Button--primary',
+                        href: '?sort=popular',
+                    },
+                        app.translator.trans('block-cat-default.forum.sort_button_6')
                     )
                 );
             }

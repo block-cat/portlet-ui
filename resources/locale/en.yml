@@ -6,6 +6,7 @@ block-cat-default:
     sort_button_3: "Newest"
     sort_button_4: "The oldest"
     sort_button_5: "Trending"
+    sort_button_6: "Popular"
     likes: "voturi"
     comments: "comments"
     views: "vizualizări"

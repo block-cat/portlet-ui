@@ -1,38 +1,134 @@
 @import "https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css";
 
-.IndexPage {
-  @media (min-width: 992px) {
 
-    .sideNav,
-    .sideNav>ul {
-      width: 220px;
-      margin-right: auto;
-    }
-
-    .sideNav_border {
-      border-right: 1px solid #d6d9dc;
-
-      ul {
-        position: absolute;
-        border-right: 1px solid #d6d9dc;
-        height: 100%;
-      }
-    }
-
-    .sidenav_fixed {
-      position: fixed !important;
-    }
-
-    .nav_Navigation {
-      background: #fff;
-      border-radius: 0.5rem;
-      padding: 0px;
-    }
-
-    .nav_Navigation_shadow {
-      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
-    }
+// by Tudor
+@media @desktop-up and (max-width:2560px){
+  .sideNav{
+    flex-shrink:0;
+    margin-right:auto;
+    position:fixed;
+    z-index:2;
+    top:52px;
+    // overflow:auto;
+    width:auto;
+    height:100%;
+    padding-left:10px;
+    background:@body-bg;
+    border-right:1px solid fade(@hero-bg,98.5%)
   }
+
+  .sideNavOffset{
+    margin-top:0!important;
+    min-width:0;
+    padding:15px;
+    box-sizing:border-box;
+    margin-left: 185px;
+  }
+  
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft Yahei",tahoma,arial
+  } 
+  .sideNav .Dropdown--select .Dropdown-menu{margin-left:-10px;width:auto}
+  .sideNav .Dropdown--select .Dropdown-menu>li.active>a{font-weight:700;background:@hero-bg;color:@link-color;border-right:3px solid @config-primary-color}
+  .sideNav .Dropdown--select .Dropdown-menu>li>a{padding:8px 0 8px 40px}
+  a.TagLinkButton.hasIcon.child{background:0 0!important;border:0!important}
+  button.Button.Button--primary.IndexPage-newDiscussion.hasIcon{font-size:1.2em}
+
+  .item-newDiscussion-stackoverflow .Button {
+    width: auto !important;
+    background: #3089da !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    display: inline-block;
+    border: 1px solid transparent;
+    border-radius: 3px !important;
+    background-color: transparent;
+    outline: none;
+    line-height: 1.15384615;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .IndexPage-toolbar-view > li {
+    margin-right: -0.5px !important;
+}
+
+.IndexPage-toolbar-view>li>a {
+    background: transparent;
+    font-weight: 400;
+    font-size: 12px;
+    border: 1px solid #9fa6ad;
+    margin: 0px !important;
+    color: #536e88;
+    border-radius: 0px;
+    line-height: 1.15384615;
+    padding: .8em !important;
+    /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; */
+  }
+  
+  .IndexPage-toolbar-view>li>a:hover {
+    background-color: #e4edf6;
+  }
+  
+  .IndexPage-toolbar-view>li>a:active,
+  .IndexPage-toolbar-view>li>a:focus {
+    background-color: #d8d8d8;
+  }
+
+  .IndexPage-toolbar-view>li:first-child>a {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  
+  .IndexPage-toolbar-view>li:last-child>a {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  .DiscussionListItem-options-blocks{
+    background:@body-bg;
+    border:1px solid fade(@hero-bg,98.5%)
+  }
+
+}
+
+
+.IndexPage {
+  
+  // @media (min-width: 992px) {
+
+  //   // .sideNav,
+  //   // .sideNav>ul {
+  //   //   width: 220px;
+  //   //   margin-right: auto;
+  //   // }
+
+  //   // .sideNav_border {
+  //   //   border-right: 1px solid #d6d9dc;
+
+  //     // ul {
+  //     //   position: absolute;
+  //     //   border-right: 1px solid #d6d9dc;
+  //     //   height: 100%;
+  //     // }
+  //   }
+
+  //   // .sidenav_fixed {
+  //   //   position: fixed !important;
+  //   // }
+
+  //   // .nav_Navigation {
+  //   //   background: #fff;
+  //   //   border-radius: 0.5rem;
+  //   //   padding: 0px;
+  //   // }
+
+  //   // .nav_Navigation_shadow {
+  //   //   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+  //   // }
+  // }
 
   @media (min-width: 768px) and (max-width: 991px) {
     .nav_Navigation {
@@ -160,37 +256,37 @@
 
 }
 
-.IndexPage-toolbar-view>li>a {
-  background: transparent;
-  font-weight: 400;
-  font-size: 12px;
-  border: 1px solid #9fa6ad;
-  margin: 0px !important;
-  color: #6a737c;
-  border-radius: 0px;
-  line-height: 1.15384615;
-  padding: .8em !important;
-  /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; */
-}
+// .IndexPage-toolbar-view>li>a {
+//   background: transparent;
+//   font-weight: 400;
+//   font-size: 12px;
+//   border: 1px solid #9fa6ad;
+//   margin: 0px !important;
+//   color: #6a737c;
+//   border-radius: 0px;
+//   line-height: 1.15384615;
+//   padding: .8em !important;
+//   /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; */
+// }
 
-.IndexPage-toolbar-view>li>a:hover {
-  background: #f8f9f9;
-}
+// .IndexPage-toolbar-view>li>a:hover {
+//   background: #f8f9f9;
+// }
 
-.IndexPage-toolbar-view>li>a:active,
-.IndexPage-toolbar-view>li>a:focus {
-  background: #d8d8d8;
-}
+// .IndexPage-toolbar-view>li>a:active,
+// .IndexPage-toolbar-view>li>a:focus {
+//   background: #d8d8d8;
+// }
 
-.IndexPage-toolbar-view>li:first-child>a {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
+// .IndexPage-toolbar-view>li:first-child>a {
+//   border-top-left-radius: 3px;
+//   border-bottom-left-radius: 3px;
+// }
 
-.IndexPage-toolbar-view>li:last-child>a {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
+// .IndexPage-toolbar-view>li:last-child>a {
+//   border-top-right-radius: 3px;
+//   border-bottom-right-radius: 3px;
+// }
 
 .DiscussionListItem-options {
   padding: 12px 0;
@@ -316,12 +412,12 @@
   }
 
   .D-border {
-    border: 1px solid #fff;
-    border-top: 1px solid #d6d9dc;
+    border-bottom:1px solid fade(@hero-bg,98.5%)
   }
 
   .D-border:hover {
-    border: 1px solid #d6d9dc;
+    background: @hero-bg;
+    border-radius: unset;
   }
 
   .button_citeste_mai_mult {
@@ -351,26 +447,26 @@
   }
 
   @media (min-width: 767px) {
-    .item-newDiscussion-stackoverflow .Button {
-      width: auto !important;
-      background: #0a95ff !important;
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-      position: relative;
-      display: inline-block;
-      padding: .8em;
-      border: 1px solid transparent;
-      border-radius: 3px;
-      background-color: transparent;
-      outline: none;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: normal;
-      line-height: 1.15384615;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      user-select: none;
-    }
+    // .item-newDiscussion-stackoverflow .Button {
+    //   width: auto !important;
+    //   background: #0a95ff !important;
+    //   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    //   position: relative;
+    //   display: inline-block;
+    //   padding: .8em;
+    //   border: 1px solid transparent;
+    //   border-radius: 3px;
+    //   background-color: transparent;
+    //   outline: none;
+    //   font-family: inherit;
+    //   font-size: 13px;
+    //   font-weight: normal;
+    //   line-height: 1.15384615;
+    //   text-align: center;
+    //   text-decoration: none;
+    //   cursor: pointer;
+    //   user-select: none;
+    // }
   }
 
   .item-newDiscussion_3d {
@@ -406,16 +502,16 @@
 /* .item-excerpt div:hover::after {
     text-decoration: underline;
 } */
-.Dropdown-menu>li {
-  padding-left: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
+// .Dropdown-menu>li {
+//   padding-left: 10px;
+//   padding-top: 3px;
+//   padding-bottom: 3px;
+// }
 
-.Dropdown-menu>.active {
-  border-right: 3px solid #1c5d99;
-  background: #f1f2f3;
-}
+// .Dropdown-menu>.active {
+//   border-right: 3px solid #1c5d99;
+//   background: #f1f2f3;
+// }
 
 .d-none {
   display: none !important;

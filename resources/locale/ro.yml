@@ -5,10 +5,11 @@ block-cat-default:
     sort_button_2: "Cele mai citite"
     sort_button_3: "Cele mai noi"
     sort_button_4: "Cele mai vechi"
-    sort_button_5: "Trending"
-    likes: "votes"
-    comments: "comments"
-    views: "views"
+    sort_button_5: "Cele mai votate"
+    sort_button_6: "Cele mai vizualizate"
+    likes: "voturi"
+    comments: "comentarii"
+    views: "vizualizări"
     button_citeste_mai_mult: "Citeste mai mult..."
   admin:
     settings:

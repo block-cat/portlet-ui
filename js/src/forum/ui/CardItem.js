@@ -177,7 +177,7 @@ export default function () {
                 </span>
 
                 <div className={'DiscussionListItem-content Slidable-content' + (isUnread ? ' unread' : '') + (isRead ? ' read' : '') + (vasiaSettings.remove_additional_space ? ' D_remove_additional_space' : '')}>
-                    <div style="display: flex; flex-direction: column; margin-right: 15px;">
+                    <div style="display: flex; flex-direction: column; margin-right: 15px; font-size: 10px">
                         {!vasiaSettings.author_bottom ?
                             <Tooltip
                                 text={app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}
@@ -235,12 +235,12 @@ export default function () {
                             {vasiaSettings.author_bottom ?
                                 <div className="DiscussionListItem-options-author">
                                     <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
-                                        <p style="color: hsl(210,8%,45%);">{listItems(terminalPost)}</p>
+                                        {/* mod by Tudor on 28.11.2021 */}
+                                        <p style="color: hsl(210,8%,45%);">{app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}</p>
                                         <div style="display: flex;">
                                             {avatar(user, { title: '' })}
                                             <div>
-                                                <p style="font-size: 12px;">{displayName}
-                                                </p>
+                                                <p style="font-size: 12px;">{displayName}</p>
                                                 <p><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points} <i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</p>
                                             </div>
                                         </div>
