@@ -18,6 +18,11 @@ import ActionItems from './ui/ActionItems.js';
 import HeaderSec from './ui/HeaderSec.js';
 import Editor from './ui/Editor.js';
 
+// tudor
+import { override } from "flarum/extend";
+import WelcomeHero from "flarum/components/WelcomeHero";
+import Welcome from './ui/Welcome';
+
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
   changeIconFromMenu();
@@ -38,4 +43,9 @@ app.initializers.add('block-cat/portlet-ui', () => {
   ActionItems();
   HeaderSec();
   Editor();
+  //tudor
+  override(WelcomeHero.prototype, "view", (el) => {
+    return Welcome.component();
+  });
+
 }, -20);
