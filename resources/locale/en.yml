@@ -85,3 +85,12 @@ block-cat-default:
       item_excerpt_color: "Item-except color"
       rankings_button_header: "Rankings button in header"
       author_bottom: "Post author bottom"
+    welcome_settings:
+      title: "Welcome!"
+      leftText: "Left text"
+      letfText_text: "Write text which appear on left in WelcomeHero"
+      rightText: "Right text"
+      rightText_text: "Write text which appear on right in WelcomeHero"
+      sliderItems: "Splash text"
+      sliderItems_text: "Write list of splash texts. Every text should be added in new line"
+      placeholder: "Write text"

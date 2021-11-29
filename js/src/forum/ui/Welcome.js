@@ -1,5 +1,6 @@
 import Component from "flarum/Component";
 import Button from "flarum/components/Button";
+import app from 'flarum/app';
 
 
 var features = ["Scrie articole fără logare sau înregistare",
@@ -32,10 +33,13 @@ setInterval(function(){ displayRandomFeature(document.getElementById('features')
 
 export default class Welcome extends Component {
   init() {
+    super.init();
     this.hidden = false;
+    console.log(app.forum.attribute('block-cat.welcomeSettings'));
   }
 
   view() {
+    console.log(app.forum.attribute('block-cat.welcomeSettings'));
     // if (this.hidden) return <div />;
 
     const slideUp = () => {
@@ -124,6 +128,6 @@ export default class Welcome extends Component {
   hide() {
     // localStorage.setItem("customwelcomehero_welcomeHidden", "true");
 
-    this.hidden = false;
+    this.hidden = true;
   }
 }

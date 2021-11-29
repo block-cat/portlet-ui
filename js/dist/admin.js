@@ -191,7 +191,18 @@ var DefaultSettingsPage = /*#__PURE__*/function (_ExtensionPage) {
   _proto.oninit = function oninit(vnode) {
     var _this = this;
 
-    _ExtensionPage.prototype.oninit.call(this, vnode); // get settings name in Object format
+    _ExtensionPage.prototype.oninit.call(this, vnode); // get welcome settings
+
+
+    this.welcomeSettings = JSON.parse(flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.data.settings["block-cat.welcome_settings"] || null);
+
+    if (!this.welcomeSettings) {
+      this.welcomeSettings = {
+        leftText: '',
+        rightText: '',
+        sliderItems: []
+      };
+    } // get settings name in Object format
 
 
     this.settings = JSON.parse(flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.data.settings["block-cat.default_settings"]); // get routes name in Object format
@@ -239,7 +250,20 @@ var DefaultSettingsPage = /*#__PURE__*/function (_ExtensionPage) {
       m('Form', {
         // onsubmit action call onsubmit method
         onsubmit: this.onsubmit.bind(this)
-      }, [m('.SettingsGroup', [// container to flex in 2 column
+      }, [m('.SettingsGroup', [// contains all group settings
+      m('.Welcome', [// Start Welcome Settings
+      m('label.hello', flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans('block-cat-default.admin.welcome_settings.title')), Object.keys(this.welcomeSettings).map(function (key) {
+        return m('.Form-group.' + key, [m('label', flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans("block-cat-default.admin.welcome_settings." + key)), m('.helpText', flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans("block-cat-default.admin.welcome_settings." + key + "_text")), m(key === 'sliderItems' ? 'textarea.FormControl' : 'input.FormControl', {
+          type: key === 'sliderItems' ? undefined : 'text',
+          rows: key === 'sliderItems' ? 6 : undefined,
+          value: key === 'sliderItems' ? _this2.welcomeSettings[key].join('\n') : _this2.welcomeSettings[key],
+          placeholder: flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans('block-cat-default.admin.welcome_settings.placeholder'),
+          oninput: function oninput(e) {
+            key === 'sliderItems' ? _this2.welcomeSettings[key] = e.target.value.split('\n') : _this2.welcomeSettings[key] = e.target.value;
+            _this2.modified = true;
+          }
+        })]);
+      })]), // End Welcome Settings
       m('.Settings', [// Start Settings Column
       m('label', flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans('block-cat-default.admin.settings.title')), Object.keys(this.vasia_settings).map(function (key) {
         if (key === 'button_3d_new' || key === 'sideNav_shadow' || key === 'buttons_votes_comments_views' || key === 'view_tags' || key === 'view_hero' || key === 'button_etichete' || key === 'sidenav_fixed' || key === 'button_adauga_right' || key === 'remove_additional_space' || key === 'show_item_sort' || key === 'add_input_hover_style' || key === 'display_pdf_files' || key === 'add_borders' || key === 'rankings_button_header' || key === 'author_bottom') {
@@ -432,7 +456,7 @@ var DefaultSettingsPage = /*#__PURE__*/function (_ExtensionPage) {
     try {
       var _saveSettings;
 
-      flarum_utils_saveSettings__WEBPACK_IMPORTED_MODULE_5___default()((_saveSettings = {}, _saveSettings["block-cat.default_settings"] = JSON.stringify(this.settings), _saveSettings["block-cat.default_routes"] = JSON.stringify(this.routes), _saveSettings["block-cat.vasia_settings"] = JSON.stringify(this.vasia_settings), _saveSettings));
+      flarum_utils_saveSettings__WEBPACK_IMPORTED_MODULE_5___default()((_saveSettings = {}, _saveSettings["block-cat.default_settings"] = JSON.stringify(this.settings), _saveSettings["block-cat.welcome_settings"] = JSON.stringify(this.welcomeSettings), _saveSettings["block-cat.default_routes"] = JSON.stringify(this.routes), _saveSettings["block-cat.vasia_settings"] = JSON.stringify(this.vasia_settings), _saveSettings));
       flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.alerts.show(flarum_common_components_Alert__WEBPACK_IMPORTED_MODULE_8___default.a, {
         type: "success"
       }, flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans('core.admin.settings.saved_message'));
@@ -442,6 +466,7 @@ var DefaultSettingsPage = /*#__PURE__*/function (_ExtensionPage) {
       }, flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.translator.trans('core.lib.error.generic_message'));
     } finally {
       this.settings = JSON.parse(flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.data.settings["block-cat.default_settings"]);
+      this.welcomeSettings = JSON.parse(flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.data.settings["block-cat.welcome_settings"]);
       this.routes = JSON.parse(flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.data.settings["block-cat.default_routes"]);
       this.vasia_settings = JSON.parse(flarum_app__WEBPACK_IMPORTED_MODULE_2___default.a.data.settings["block-cat.vasia_settings"]);
       this.loading = false;

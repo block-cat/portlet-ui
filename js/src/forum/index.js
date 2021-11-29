@@ -19,9 +19,9 @@ import HeaderSec from './ui/HeaderSec.js';
 import Editor from './ui/Editor.js';
 
 // tudor
-import { override } from "flarum/extend";
-import WelcomeHero from "flarum/components/WelcomeHero";
-import Welcome from './ui/Welcome';
+// import { override } from "flarum/extend";
+// import WelcomeHero from "flarum/components/WelcomeHero";
+// import Welcome from './ui/Welcome';
 
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
@@ -44,8 +44,9 @@ app.initializers.add('block-cat/portlet-ui', () => {
   HeaderSec();
   Editor();
   //tudor
-  override(WelcomeHero.prototype, "view", (el) => {
-    return Welcome.component();
-  });
+  // override(WelcomeHero.prototype, "view", (el) => {
+  //   // console.log(this.hidden);
+  //   return Welcome.component();
+  // });
 
 }, -20);
