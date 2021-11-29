@@ -241,7 +241,7 @@ export default function () {
                                             {avatar(user, { title: '' })}
                                             <div>
                                                 <p style="font-size: 12px;">{displayName}</p>
-                                                <p>{user.data.attributes ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes}</span> : ""} {user.data.attributes.discussionCount ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
+                                                <p>{user.data.attributes ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points}</span> : ""} {user.data.attributes ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
                                             </div>
                                         </div>
                                     </Link>
