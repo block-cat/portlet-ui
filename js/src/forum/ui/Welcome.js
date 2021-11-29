@@ -112,7 +112,7 @@ export default class Welcome extends Component {
         </div>
         <div class="features flex mt-4 max-w-5xl mx-auto">
             
-            <h1 id="features" class="text-3xl text-blue-300 p-4 mx-auto">{features[0]}</h1>
+            <h1 id="features" class="text-3xl text-blue-300 mx-auto">{features[0]}</h1>
         </div>
       </header>
     );

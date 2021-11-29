@@ -34783,7 +34783,7 @@ var Welcome = /*#__PURE__*/function (_Component) {
       "class": "features flex mt-4 max-w-5xl mx-auto"
     }, m("h1", {
       id: "features",
-      "class": "text-3xl text-blue-300 p-4 mx-auto"
+      "class": "text-3xl text-blue-300 mx-auto"
     }, features[0])));
   }
   /**
