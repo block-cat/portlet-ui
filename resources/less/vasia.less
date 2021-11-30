@@ -2,40 +2,64 @@
 
 
 // by Tudor
-@media @desktop-up and (max-width:2560px){
-  .sideNav{
-    flex-shrink:0;
-    margin-right:auto;
-    position:fixed;
-    z-index:2;
-    top:52px;
+@media (max-width:2560px) {
+  .sideNav {
+    flex-shrink: 0;
+    margin-right: auto;
+    position: fixed;
+    z-index: 2;
+    top: 52px;
     // overflow:auto;
-    width:auto;
-    height:100%;
-    padding-left:10px;
-    background:@body-bg;
-    border-right:1px solid fade(@hero-bg,98.5%);
+    width: auto;
+    height: 100%;
+    padding-left: 10px;
+    background: @body-bg;
+    border-right: 1px solid fade(@hero-bg, 98.5%);
     margin-left: -15px;
   }
 
-  .sideNavOffset{
-    margin-top:0!important;
-    min-width:0;
-    padding:15px;
-    box-sizing:border-box;
+  .sideNavOffset {
+    margin-top: 0 !important;
+    min-width: 0;
+    padding: 15px;
+    box-sizing: border-box;
     margin-left: 185px;
   }
-  
-  a.titleFeed{font-weight:700}
 
-  body{
-    font-family:"PingFang SC","Hiragino Sans GB","Microsoft Yahei",tahoma,arial
-  } 
-  .sideNav .Dropdown--select .Dropdown-menu{margin-left:-10px;width:auto}
-  .sideNav .Dropdown--select .Dropdown-menu>li.active>a{font-weight:700;background:@hero-bg;color:@link-color;border-right:3px solid @config-primary-color}
-  .sideNav .Dropdown--select .Dropdown-menu>li>a{padding:8px 0 8px 40px}
-  a.TagLinkButton.hasIcon.child{background:0 0!important;border:0!important}
-  button.Button.Button--primary.IndexPage-newDiscussion.hasIcon{font-size:1.2em}
+  a.titleFeed {
+    font-weight: 700
+  }
+
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", tahoma, arial
+  }
+
+
+
+  .sideNav .Dropdown--select .Dropdown-menu {
+    margin-left: -10px;
+    width: auto
+  }
+
+  .sideNav .Dropdown--select .Dropdown-menu>li.active>a {
+    font-weight: 700;
+    background: @hero-bg;
+    color: @link-color;
+    border-right: 3px solid @config-primary-color
+  }
+
+  .sideNav .Dropdown--select .Dropdown-menu>li>a {
+    padding: 8px 0 8px 40px
+  }
+
+  a.TagLinkButton.hasIcon.child {
+    background: 0 0 !important;
+    border: 0 !important
+  }
+
+  button.Button.Button--primary.IndexPage-newDiscussion.hasIcon {
+    font-size: 1.2em
+  }
 
   .item-newDiscussion-stackoverflow .Button {
     width: auto !important;
@@ -54,11 +78,11 @@
     user-select: none;
   }
 
-  .IndexPage-toolbar-view > li {
+  .IndexPage-toolbar-view>li {
     margin-right: -0.5px !important;
-}
+  }
 
-.IndexPage-toolbar-view>li>a {
+  .IndexPage-toolbar-view>li>a {
     background: transparent;
     font-weight: 400;
     font-size: 12px;
@@ -70,11 +94,11 @@
     padding: .8em !important;
     /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; */
   }
-  
+
   .IndexPage-toolbar-view>li>a:hover {
     background-color: #e4edf6;
   }
-  
+
   .IndexPage-toolbar-view>li>a:active,
   .IndexPage-toolbar-view>li>a:focus {
     background-color: #d8d8d8;
@@ -84,22 +108,27 @@
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
-  
+
   .IndexPage-toolbar-view>li:last-child>a {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
 
-  .DiscussionListItem-options-blocks{
-    background:@body-bg;
-    border:1px solid fade(@hero-bg,98.5%)
-  }
+  /* .DiscussionListItem-options-blocks {
+    background: @body-bg;
+    border: 1px solid fade(@hero-bg, 98.5%)
+  } */
 
 }
 
 
+
+.UserPage-nav {
+  top: unset !important;
+}
+
 .IndexPage {
-  
+
   // @media (min-width: 992px) {
 
   //   // .sideNav,
@@ -259,38 +288,35 @@
 
 }
 
-// .IndexPage-toolbar-view>li>a {
-//   background: transparent;
-//   font-weight: 400;
-//   font-size: 12px;
-//   border: 1px solid #9fa6ad;
-//   margin: 0px !important;
-//   color: #6a737c;
-//   border-radius: 0px;
-//   line-height: 1.15384615;
-//   padding: .8em !important;
-//   /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; */
-// }
-
-// .IndexPage-toolbar-view>li>a:hover {
-//   background: #f8f9f9;
-// }
-
-// .IndexPage-toolbar-view>li>a:active,
-// .IndexPage-toolbar-view>li>a:focus {
-//   background: #d8d8d8;
-// }
-
-// .IndexPage-toolbar-view>li:first-child>a {
-//   border-top-left-radius: 3px;
-//   border-bottom-left-radius: 3px;
-// }
-
-// .IndexPage-toolbar-view>li:last-child>a {
-//   border-top-right-radius: 3px;
-//   border-bottom-right-radius: 3px;
-// }
-
+/*
+ .IndexPage-toolbar-view>li>a {
+   background: transparent;
+   font-weight: 400;
+   font-size: 12px;
+   border: 1px solid #9fa6ad;
+   margin: 0px !important;
+   color: #6a737c;
+   border-radius: 0px;
+   line-height: 1.15384615;
+   padding: .8em !important;
+   /* box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.5) inset; 
+ }
+ .IndexPage-toolbar-view>li>a:hover {
+   background: #f8f9f9;
+ }
+ .IndexPage-toolbar-view>li>a:active,
+ .IndexPage-toolbar-view>li>a:focus {
+   background: #d8d8d8;
+ }
+ .IndexPage-toolbar-view>li:first-child>a {
+   border-top-left-radius: 3px;
+   border-bottom-left-radius: 3px;
+ }
+ .IndexPage-toolbar-view>li:last-child>a {
+   border-top-right-radius: 3px;
+   border-bottom-right-radius: 3px;
+ }
+*/
 .DiscussionListItem-options {
   padding: 12px 0;
 }
@@ -305,10 +331,13 @@
   }
 }
 
+
 @media (min-width: 768px) {
   .DiscussionListItem-options {
     /* margin-left: -52px; */
-    width: 80px;
+    width: 48px;
+    margin-right: 20px;
+
     /* margin-right: 15px; */
   }
 
@@ -353,6 +382,14 @@
 
 .DiscussionListItem-options-blocks {
   text-align: center;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 15%);
+  border-radius: 45%;
+  padding: 5px;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0px;
+  }
 }
 
 .DiscussionListItem-options-blocks>h3 {
@@ -415,7 +452,7 @@
   }
 
   .D-border {
-    border-bottom:1px solid fade(@hero-bg,98.5%)
+    border-bottom: 1px solid fade(@hero-bg, 98.5%)
   }
 
   .D-border:hover {

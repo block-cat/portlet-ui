@@ -203,16 +203,19 @@ export default function () {
 
                                 <div className="DiscussionListItem-options-blocks">
                                     <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
-                                    <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>
+                                    <p className=""><i class="far fa-thumbs-up icon Button-icon" style="margin: 0px;"></i></p>
+                                    {/* <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p> */}
                                 </div>
-
+                                
                                 <div className="DiscussionListItem-options-blocks">
                                     <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
-                                    <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>
+                                    <p className=""><i class="far fa-comments icon Button-icon" style="margin: 0px;"></i></p>
+                                    {/* <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p> */}
                                 </div>
                                 <div className="DiscussionListItem-options-blocks">
                                     <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
-                                    <p className="">{app.translator.trans('block-cat-default.forum.views')}</p>
+                                    <p className=""><i class="far fa-eye icon Button-icon" style="margin: 0px;"></i></p>
+                                    {/* <p className="">{app.translator.trans('block-cat-default.forum.views')}</p> */}
                                 </div>
                             </Link>
                             : ""}
