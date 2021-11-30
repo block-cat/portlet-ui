@@ -201,7 +201,7 @@ export default function () {
                                         <div style="display: flex;">
                                             {avatar(user, { title: '' })}
                                             <div>
-                                                <p style="font-size: 12px;">{displayName}</p>
+                                                <p style="font-size: 12px;">{displayName.replace('[șters]', 'anonim')}</p>
                                                 <p>{user.data ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points}</span> : ""} {user.data ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
                                             </div>
                                         </div>
