@@ -23,19 +23,48 @@
         }
     }
 }
-.SettingsGroup {
-    display: flex;
-    column-count: 2;
-    column-gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+.hello {
+    grid-area: hello;
+}
+.leftText {
+    grid-area: left;
+}
+.rightText {
+    grid-area: right;
+}
+.sliderItems {
+    grid-area: slider;
+}
+.Welcome {
+    grid-area: welcome;
+    grid-template-areas:
+        'hello hello'
+        'left right'
+        'slider slider';
 
-    .Settings, .Routes {
+    textarea {
+        resize: none;
+    }
+}
+.Settings {
+    grid-area: settings;
+}
+.Routes {
+    grid-area: routes;
+}
+.SettingsGroup {
+    display: grid;
+    grid-gap: 15px;
+    margin-bottom: 20px;
+    grid-template-areas:
+        'welcome welcome'
+        'settings routes';
+
+    .Settings, .Routes, .Welcome {
         border: 1px solid #e8ecf3;
         padding: 10px 20px;
         border-radius: 4px;
-        flex: 1 1;
-        display: inline-grid;
+        display: grid;
         grid-template-rows: min-content;
 
         > label {

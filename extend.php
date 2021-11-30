@@ -24,6 +24,7 @@ return [
     new Extend\Locales(__DIR__ . '/resources/locale'),
     (new Extend\Settings())
         ->serializeToForum('block-cat.defaultSettings', 'block-cat.default_settings')
+        ->serializeToForum('block-cat.welcomeSettings', 'block-cat.welcome_settings')
         ->serializeToForum('block-cat.vasiaSettings', 'block-cat.vasia_settings')
         ->serializeToForum('block-cat.defaultRoutes', 'block-cat.default_routes'),
     (new Extend\Formatter)

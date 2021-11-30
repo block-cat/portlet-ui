@@ -11,6 +11,17 @@ export default class DefaultSettingsPage extends ExtensionPage {
   oninit(vnode) {
     super.oninit(vnode);
 
+    // get welcome settings
+    this.welcomeSettings = JSON.parse(app.data.settings["block-cat.welcome_settings"] || null);
+    
+    if (!this.welcomeSettings) {
+      this.welcomeSettings = {
+        leftText: '',
+        rightText: '',
+        sliderItems: [],
+      };
+    }
+    
     // get settings name in Object format
     this.settings = JSON.parse(app.data.settings["block-cat.default_settings"]);
     // get routes name in Object format
@@ -64,7 +75,28 @@ export default class DefaultSettingsPage extends ExtensionPage {
             // onsubmit action call onsubmit method
             onsubmit: this.onsubmit.bind(this),
           }, [
-            m('.SettingsGroup', [ // container to flex in 2 column
+            m('.SettingsGroup', [ // contains all group settings
+              m('.Welcome', [ // Start Welcome Settings
+                m('label.hello', app.translator.trans('block-cat-default.admin.welcome_settings.title')),
+                Object.keys(this.welcomeSettings).map((key) => {
+                  return m('.Form-group.' + key, [
+                    m('label', app.translator.trans(`block-cat-default.admin.welcome_settings.${key}`)),
+                    m('.helpText', app.translator.trans(`block-cat-default.admin.welcome_settings.${key}_text`)),
+                    m(key === 'sliderItems' ? 'textarea.FormControl' : 'input.FormControl', {
+                      type: key === 'sliderItems' ? undefined : 'text',
+                      rows: key === 'sliderItems' ? 6 : undefined,
+                      value: key === 'sliderItems' ? this.welcomeSettings[key].join('\n') : this.welcomeSettings[key],
+                      placeholder: app.translator.trans('block-cat-default.admin.welcome_settings.placeholder'),
+                      oninput: (e) => {
+                        key === 'sliderItems' ?
+                          this.welcomeSettings[key] = e.target.value.split('\n') :
+                          this.welcomeSettings[key] = e.target.value;
+                        this.modified = true;
+                      },
+                    }),
+                  ]);
+                }),
+              ]), // End Welcome Settings
               m('.Settings', [ // Start Settings Column
                 m('label', app.translator.trans('block-cat-default.admin.settings.title')),
 
@@ -337,6 +369,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
     try {
       saveSettings({
         ["block-cat.default_settings"]: JSON.stringify(this.settings),
+        ["block-cat.welcome_settings"]: JSON.stringify(this.welcomeSettings),
         ["block-cat.default_routes"]: JSON.stringify(this.routes),
         ["block-cat.vasia_settings"]: JSON.stringify(this.vasia_settings),
       });
@@ -357,6 +390,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
       );
     } finally {
       this.settings = JSON.parse(app.data.settings["block-cat.default_settings"]);
+      this.welcomeSettings = JSON.parse(app.data.settings["block-cat.welcome_settings"]);
       this.routes = JSON.parse(app.data.settings["block-cat.default_routes"]);
       this.vasia_settings = JSON.parse(app.data.settings["block-cat.vasia_settings"]);
       this.loading = false;
