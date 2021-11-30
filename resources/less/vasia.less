@@ -1,6 +1,7 @@
 @import "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css";
 
-.IndexPage {
+.IndexPage,
+.DiscussionPage {
   @media (min-width: 992px) {
 
     .sideNav,
@@ -672,10 +673,48 @@
   background: #e4edf6;
   border-radius: 8px;
   padding: 20px;
+
   h2 {
     font-size: 22px;
     margin: 0;
     font-weight: normal;
     line-height: 1.5em;
+  }
+}
+
+.DiscussionPage-stream {
+  padding-left: 20px;
+}
+
+.PostStream-item[data-number='1'] {
+  .item-user {
+    display: none !important;
+  }
+
+  @media (min-width: 768px) {
+    .Post {
+      padding: 20px !important;
+      margin: 0px;
+      background: #e4edf6;
+      border-radius: 8px;
+    }
+
+    .item-votes {
+      position: relative;
+      top: unset !important;
+      left: unset !important;
+    }
+
+    .Post-votes {
+      position: relative;
+      top: 0px !important;
+    }
+
+    .Post-header {
+      ul {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 }

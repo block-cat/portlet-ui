@@ -37,8 +37,6 @@ export default function () {
                 badges_tags = "<ul className='DiscussionHero-badges badges'>{listItems(badges)}</ul>";
             }
         } */
-
-
         return (
             <div className="DiscussionPage">
                 <DiscussionListPane state={app.discussions} />
