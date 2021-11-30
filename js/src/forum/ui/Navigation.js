@@ -49,7 +49,7 @@ export default function () {
                                     <div className="sideNav">
                                         <ul className="">{listItems(index.toArray())}</ul>
                                     </div>
-                                    <div style="width: 100%; padding-top: 30px;">
+                                    <div className="sideNavOffset" style="width: 100%; padding-top: 30px;">
                                         <nav className="DiscussionPage-nav">
                                             <ul>{listItems(this.sidebarItems().toArray())}</ul>
                                         </nav>

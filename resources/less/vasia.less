@@ -1,6 +1,28 @@
 @import "https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css";
 
 // by Tudor
+@media (min-width:990px) {
+  .sideNav {
+    height: 100%;
+  }
+
+  .sideNavOffset {
+    margin-left: 185px !important;
+  }
+
+  .TagsPage .sideNav>ul>li,
+  .TagsPage .sideNav .Dropdown-menu>li {
+    display: block !important;
+
+  }
+
+  .TagsPage {
+    .sideNav .Dropdown--select .Dropdown-menu {
+      margin-left: 0px !important;
+    }
+  }
+}
+
 @media (max-width:2560px) {
   .sideNav {
     flex-shrink: 0;
@@ -10,7 +32,6 @@
     top: 52px;
     // overflow:auto;
     width: auto;
-    height: 100%;
     padding-left: 10px;
     background: @body-bg;
     border-right: 1px solid fade(@hero-bg, 98.5%);
@@ -22,7 +43,6 @@
     min-width: 0;
     padding: 15px;
     box-sizing: border-box;
-    margin-left: 185px;
   }
 
   a.titleFeed {
@@ -384,7 +404,7 @@
 
 .DiscussionListItem-options-blocks {
   text-align: center;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 15%);
+  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 15%); */
   border-radius: 45%;
   padding: 5px;
   margin-bottom: 10px;
@@ -839,15 +859,21 @@
   text-align: center;
   color: #668099;
   background: #e4edf6;
-  border-radius: 8px;
-  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 15px;
 
   h2 {
-    font-size: 22px;
+    font-size: 18px;
+    color: #3b3b3b !important;
     margin: 0;
     font-weight: normal;
     line-height: 1.5em;
   }
+}
+
+.PostStream {
+  margin-top: 0px;
 }
 
 .DiscussionPage-stream {
@@ -862,9 +888,11 @@
   @media (min-width: 768px) {
     .Post {
       padding: 20px !important;
+      padding-top: 10px !important;
       margin: 0px;
       background: #e4edf6;
-      border-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
     }
 
     /* .item-votes {
@@ -880,9 +908,11 @@
 
     .Post-header {
       margin-bottom: 0px;
-      .item-meta{
+
+      .item-meta {
         display: none;
       }
+
       ul {
         display: flex;
         justify-content: space-between;
