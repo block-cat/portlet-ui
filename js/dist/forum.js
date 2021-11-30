@@ -34471,6 +34471,7 @@ __webpack_require__.r(__webpack_exports__);
     }
     var title = this.headerItems().toArray();
     title.splice(0, 2);
+    var etichete = this.headerItems().toArray();
     var MyDisplayName = this.attrs.user.data.attributes.displayName;
     return m("div", {
       className: 'ComposerBody ' + (this.attrs.className || '')
@@ -34499,7 +34500,9 @@ __webpack_require__.r(__webpack_exports__);
       className: 'ComposerBody-avatar-right'
     }), " ", m("p", {
       className: "my_displa_name"
-    }, MyDisplayName)), m("div", {
+    }, MyDisplayName)), m("ul", {
+      className: "ComposerBody-etichete"
+    }, flarum_common_helpers_listItems__WEBPACK_IMPORTED_MODULE_8___default()(etichete[1])), m("div", {
       className: "Button Button_publicare",
       onclick: this.onsubmit.bind(this)
     }, this.attrs.submitLabel))), m(flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_10___default.a, {
