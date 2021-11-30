@@ -1,5 +1,6 @@
 
 @import url("./vasia.less");
+@import url("./welcome.less");
 
 // Eliminarea scrolling-ului dublu
 #app {
@@ -51,4 +52,24 @@
     .Post:hover &, &.open {
         opacity: 1;
     }
+}
+
+@media @desktop-up and (max-width:2560px){
+    .sideNav {
+        box-shadow: inset -7px 0 7px -7px rgb(200, 200, 200);
+    }
+
+    .sideNavOffset{
+        margin-left: 170px !important;
+    }
+
+    // borerul din dreapta la sortare fara suprapunere
+    .item-Noi a, .item-Vechi a, .item-Votate a{
+        border-right: 0 !important;
+    }
+
+    .Pagination{
+        margin-top: 15px !important;
+    }
+
 }

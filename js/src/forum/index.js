@@ -19,6 +19,9 @@ import HeaderSec from './ui/HeaderSec.js';
 import Editor from './ui/Editor.js';
 import Navigation from './ui/Navigation.js';
 
+// tudor
+import changeWelcomeHero from './settings/changeWelcomeHero';
+
 app.initializers.add('block-cat/portlet-ui', () => {
   changePaths();
   changeIconFromMenu();
@@ -40,4 +43,6 @@ app.initializers.add('block-cat/portlet-ui', () => {
   HeaderSec();
   Editor();
   Navigation();
+  //tudor
+  changeWelcomeHero();
 }, -20);

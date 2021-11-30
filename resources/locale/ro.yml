@@ -86,3 +86,12 @@ block-cat-default:
       item_excerpt_color: "Item-except color"
       rankings_button_header: "Rankings button in header"
       author_bottom: "Post author bottom"
+    welcome_settings:
+      title: "Bun venit!"
+      leftText: "Text din stânga"
+      letfText_text: "Introdu textul care va fi prezentat în stânga"
+      rightText: "Text din dreapta"
+      rightText_text: "Introdu textul care va fi prezentat în dreapta"
+      sliderItems: "Text schimbator"
+      sliderItems_text: "Introdu lista de texte care se va schimba aleator. Fiecare text trebuie sa fie din rând nou."
+      placeholder: "Introdu text"
