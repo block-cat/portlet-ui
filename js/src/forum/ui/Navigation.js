@@ -24,7 +24,6 @@ export default function () {
 
         if (discussion) {
             const badges = discussion.badges().toArray();
-            console.log(badges);
             if (badges.length) {
                 items.add('badges', <ul className="DiscussionHero-badges badges">{listItems(badges)}</ul>, 10);
             }

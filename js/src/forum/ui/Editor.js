@@ -11,6 +11,7 @@ import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
 import ConfirmDocumentUnload from 'flarum/common/components/ConfirmDocumentUnload.js';
 import TextEditor from 'flarum/common/components/TextEditor';
 import avatar from 'flarum/common/helpers/avatar';
+import icon from 'flarum/common/helpers/icon';
 
 export default function () {
 
@@ -62,6 +63,9 @@ export default function () {
         /* </ConfirmDocumentUnload> */
 
     });
+
+
+
 
     override(Composer.prototype, 'view', function () {
         const body = this.state.body;
