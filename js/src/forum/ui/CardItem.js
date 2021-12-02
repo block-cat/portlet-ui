@@ -25,6 +25,7 @@ export default function () {
 
 
     override(DiscussionPage.prototype, 'view', function () {
+
         const discussion = this.discussion;
 
         return (
@@ -54,7 +55,7 @@ export default function () {
             </div>
         );
     }
-    )
+    );
 
 
     override(DiscussionListItem.prototype, 'view', function () {
@@ -69,6 +70,7 @@ export default function () {
         let jumpTo = 0;
         const controls = DiscussionControls.controls(discussion, this).toArray();
         const attrs = this.elementAttrs();
+        console.log(user);
 
         if (this.attrs.params.q) {
             const post = discussion.mostRelevantPost();

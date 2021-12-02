@@ -26,7 +26,12 @@ export default function () {
         let title = this.headerItems().toArray();
         title.splice(0, 2);
         let etichete = this.headerItems().toArray();
-        let MyDisplayName = this.attrs.user.data.attributes.displayName;
+        let MyDisplayName;
+        if (this.attrs.user) {
+            MyDisplayName = this.attrs.user.data.attributes.displayName;
+        }else {
+            MyDisplayName = "Anonim"
+        }
         return (
             <div className={'ComposerBody ' + (this.attrs.className || '')} >
                 <div className="ComposerBody-content">
