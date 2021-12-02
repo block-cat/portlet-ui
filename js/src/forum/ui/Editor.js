@@ -29,7 +29,7 @@ export default function () {
         let MyDisplayName;
         if (this.attrs.user) {
             MyDisplayName = this.attrs.user.data.attributes.displayName;
-        }else {
+        } else {
             MyDisplayName = "Anonim"
         }
         return (
@@ -51,7 +51,7 @@ export default function () {
                         </div>
                     </div>
                     <div className="ComposerBody-content-right">
-                        <div className="author">{avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' })} <p className="my_displa_name">{MyDisplayName}</p></div>
+                        <div className="author">{this.attrs.user ? avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' }) : ""} <p className="my_displa_name">{MyDisplayName}</p></div>
                         <ul className="ComposerBody-etichete">{listItems(etichete[1])}</ul>
                         <div className="Button Button_publicare" onclick={this.onsubmit.bind(this)}>{this.attrs.submitLabel}</div>
                     </div>
