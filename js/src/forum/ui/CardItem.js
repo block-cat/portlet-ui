@@ -70,7 +70,6 @@ export default function () {
         let jumpTo = 0;
         const controls = DiscussionControls.controls(discussion, this).toArray();
         const attrs = this.elementAttrs();
-        console.log(user);
 
         if (this.attrs.params.q) {
             const post = discussion.mostRelevantPost();
@@ -115,6 +114,10 @@ export default function () {
         const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
         vasiaSettings.add_borders ? attrs.className += " D-border" : "";
 
+        let text_admin = app.translator.trans('core.forum.discussion_list.started_text');
+        if(text_admin == "[șters]"){
+            text_admin = "anonim"
+        }
         return (
             <div {...attrs}>
                 {controls.length
@@ -199,7 +202,7 @@ export default function () {
                                 <div className="DiscussionListItem-options-author">
                                     <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
                                         {/* mod by Tudor on 28.11.2021 */}
-                                        <p style="color: hsl(210,8%,45%);">{app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}</p>
+                                        <p style="color: hsl(210,8%,45%);">{app.translator.trans(text_admin, { user, ago: humanTime(discussion.createdAt()) })}</p>
                                         <div style="display: flex;">
                                             {avatar(user, { title: '' })}
                                             <div>
