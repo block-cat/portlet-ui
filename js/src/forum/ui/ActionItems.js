@@ -9,18 +9,25 @@ export default function () {
 
     extend(IndexPage.prototype, 'viewItems', function (items) {
         const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
+        
+        // by Tudor
+        const sort = app.discussions.params.sort || 'latest';
 
         if (vasiaSettings.show_item_sort) {
             if (vasiaSettings.modify_item_sort) {
                 if (items.has('sort')) {
                     items.remove('sort');
                 }
+
+
                 items.add(
                     'Noi',
                     LinkButton.component({
                         title: "Noi",
                         className: 'Button Button--primary',
-                        href: '?sort=newest',
+                        onclick: changeSort.bind(this, "newest"),
+                        active: sort === 'newest',
+                        // href: '?sort=newest',
                     },
                         app.translator.trans('block-cat-default.forum.sort_button_3')
                     )
@@ -31,7 +38,9 @@ export default function () {
                     LinkButton.component({
                         title: "Vechi",
                         className: 'Button Button--primary',
-                        href: '?sort=oldest',
+                        onclick: changeSort.bind(this, "oldest"),
+                        active: sort === 'oldest',
+                        // href: '?sort=oldest',
                     },
                         app.translator.trans('block-cat-default.forum.sort_button_4')
                     )
@@ -42,7 +51,9 @@ export default function () {
                     LinkButton.component({
                         title: "Votate",
                         className: 'Button Button--primary',
-                        href: '?sort=votes',
+                        onclick: changeSort.bind(this, "votes"),
+                        active: sort === 'votes',
+                        // href: '?sort=votes',
                     },
                         app.translator.trans('block-cat-default.forum.sort_button_5')
                     )
@@ -53,7 +64,9 @@ export default function () {
                     LinkButton.component({
                         title: "Vizualizate",
                         className: 'Button Button--primary',
-                        href: '?sort=popular',
+                        onclick: changeSort.bind(this, "popular"),
+                        active: sort === 'popular',
+                        // href: '?sort=popular',
                     },
                         app.translator.trans('block-cat-default.forum.sort_button_6')
                     )
@@ -101,4 +114,17 @@ export default function () {
         }
     });
 
+}
+
+// Change sort by Tudor
+function changeSort(sort) {
+    const params = app.discussions.getParams();
+
+    if (sort === Object.keys(app.discussions.sortMap())[0]) {
+        delete params.sort;
+    } else {
+        params.sort = sort;
+    }
+
+    m.route.set(app.route(this.attrs.routeName, params));
 }
