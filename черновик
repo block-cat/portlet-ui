@@ -1,0 +1,15 @@
+
+                                {/* <div className="DiscussionListItem-options-blocks">
+                            <Link className="" href={user ? app.route.user(user) : '#'}>
+                                {avatar(user, { title: '' })}
+                            </Link>
+                        </div> */
+
+                                }
+
+
+
+
+
+
+                                

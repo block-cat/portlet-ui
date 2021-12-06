@@ -165,6 +165,10 @@
 .PostsUserPage-list {
   padding: 20px;
 
+  .iframe_pdf {
+    display: none;
+  }
+
   .PostsUserPage-discussion {
     a {
       font-size: 18px;
@@ -303,6 +307,27 @@
   margin: 0;
   font-size: 11px;
   color: #aaa;
+
+  .TagLabel.colored .TagLabel-text {
+    color: #668899 !important;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* .TagsLabel.colored .TagLabel-text:last-of-type::after {
+    content: "." !important;
+  } */
+
+  .TagsLabel .TagLabel:not(:last-child) .TagLabel-text::after {
+    content: ",";
+  }
+
+  .TagLabel {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0px !important;
+    background-color: transparent !important;
+  }
 }
 
 .DiscussionListItem-info {
@@ -480,6 +505,12 @@
 
 .DiscussionListItem_tags_and_author {
   display: flex;
+  flex-direction: column;
+
+  .DiscussionListItem_tags_and_author_div2 {
+    display: flex;
+    background: #aaa;
+  }
 }
 
 .author-link {
@@ -822,6 +853,10 @@
       .fof-upload-button {
         background: transparent;
       }
+
+      .CommandButton[aria-label='Inline code <ctrl-`>'] {
+        display: none;
+      }
     }
   }
 }
@@ -933,6 +968,10 @@
   .item-user,
   .item-guest-user {
     display: none !important;
+  }
+
+  .item-edited {
+    display: none;
   }
 
 

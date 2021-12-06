@@ -148,36 +148,26 @@ export default function () {
                             </Tooltip>
                             : ""}
 
-                        {vasiaSettings.buttons_votes_comments_views ?
+                        {/* {vasiaSettings.buttons_votes_comments_views ?
                             <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
-
-                                {/* <div className="DiscussionListItem-options-blocks">
-                            <Link className="" href={user ? app.route.user(user) : '#'}>
-                                {avatar(user, { title: '' })}
-                            </Link>
-                        </div> */
-
-                                }
-
-
                                 <div className="DiscussionListItem-options-blocks" title="Voturi">
                                     <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
                                     <p className=""><i class="far fa-thumbs-up icon Button-icon" style="margin: 0px;"></i></p>
-                                    {/* <p className="">{app.translator.trans('block-cat-default.forum.likes')}</p> */}
+                                    {<p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>}
                                 </div>
-                                
+
                                 <div className="DiscussionListItem-options-blocks" title="Comentarii">
                                     <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
                                     <p className=""><i class="far fa-comments icon Button-icon" style="margin: 0px;"></i></p>
-                                    {/* <p className="">{app.translator.trans('block-cat-default.forum.comments')}</p> */}
+                                    {<p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>}
                                 </div>
                                 <div className="DiscussionListItem-options-blocks" title="Vizualizări">
                                     <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
                                     <p className=""><i class="far fa-eye icon Button-icon" style="margin: 0px;"></i></p>
-                                    {/* <p className="">{app.translator.trans('block-cat-default.forum.views')}</p> */}
+                                    {<p className="">{app.translator.trans('block-cat-default.forum.views')}</p>}
                                 </div>
                             </Link>
-                            : ""}
+                            : ""} */}
                     </div>
                     <ul className="DiscussionListItem-badges badges">{listItems(discussion.badges().toArray())}</ul>
 
@@ -190,25 +180,33 @@ export default function () {
                         </ul>
 
                         <div className="DiscussionListItem_tags_and_author">
-                            {vasiaSettings.view_tags && vasiaSettings.tags_bottom ? <ul className="DiscussionListItem-info-tags">{tags}</ul> : ""}
                             {/* <div className="div_button_citeste_mai_mult">
                                 <button className="button_citeste_mai_mult">{app.translator.trans('block-cat-default.forum.button_citeste_mai_mult')}</button>
                             </div> */}
-                            {vasiaSettings.author_bottom ?
-                                <div className="DiscussionListItem-options-author">
-                                    <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
-                                        {/* mod by Tudor on 28.11.2021 */}
-                                        <p style="color: hsl(210,8%,45%);">{app.translator.trans('core.forum.discussion_list.started_text', { displayName  , ago: humanTime(discussion.createdAt()) })}</p>
-                                        <div style="display: flex;">
-                                            {avatar(user, { title: '' })}
-                                            <div>
-                                                <p style="font-size: 12px;">{displayName.replace('[șters]', 'anonim')}</p>
-                                                <p>{user.data ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points}</span> : ""} {user.data ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
+                            <div>
+                                {vasiaSettings.view_tags && vasiaSettings.tags_bottom ? <span style="display: flex;">Etichete: <ul className="DiscussionListItem-info-tags">{tags}</ul></span> : ""}
+                            </div>
+                            <div class="DiscussionListItem_tags_and_author_div2">
+
+                                {vasiaSettings.buttons_votes_comments_views ?
+                                    <div>123</div>
+                                    : ""}
+                                {vasiaSettings.author_bottom ?
+                                    <div className="DiscussionListItem-options-author">
+                                        <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
+                                            {/* mod by Tudor on 28.11.2021 */}
+                                            <p style="color: hsl(210,8%,45%);">{app.translator.trans('core.forum.discussion_list.started_text', { displayName, ago: humanTime(discussion.createdAt()) })}</p>
+                                            <div style="display: flex;">
+                                                {avatar(user, { title: '' })}
+                                                <div>
+                                                    <p style="font-size: 12px;">{displayName.replace('[șters]', 'anonim')}</p>
+                                                    <p>{user.data ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points}</span> : ""} {user.data ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                : ""}
+                                        </Link>
+                                    </div>
+                                    : ""}
+                            </div>
                         </div>
                     </Link>
                     <span
