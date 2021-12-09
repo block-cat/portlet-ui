@@ -12,4 +12,38 @@
 
 
 
-                                
+                                <div style="display: flex; flex-direction: column; margin-right: 15px; font-size: 10px">
+                        {!vasiaSettings.author_bottom ?
+                            <Tooltip
+                                text={app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}
+                                position="right"
+                            >
+                                <Link className="DiscussionListItem-author author_top" href={user ? app.route.user(user) : '#'}>
+                                    {avatar(user, { title: '' })}
+                                </Link>
+                            </Tooltip>
+                            : ""}
+
+                        {/* {vasiaSettings.buttons_votes_comments_views ?
+                            <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
+                                <div className="DiscussionListItem-options-blocks" title="Voturi">
+                                    <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
+                                    <p className=""><i class="far fa-thumbs-up icon Button-icon" style="margin: 0px;"></i></p>
+                                    {<p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>}
+                                </div>
+
+                                <div className="DiscussionListItem-options-blocks" title="Comentarii">
+                                    <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
+                                    <p className=""><i class="far fa-comments icon Button-icon" style="margin: 0px;"></i></p>
+                                    {<p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>}
+                                </div>
+                                <div className="DiscussionListItem-options-blocks" title="Vizualizări">
+                                    <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
+                                    <p className=""><i class="far fa-eye icon Button-icon" style="margin: 0px;"></i></p>
+                                    {<p className="">{app.translator.trans('block-cat-default.forum.views')}</p>}
+                                </div>
+                            </Link>
+                            : ""} */}
+                    </div>
+
+

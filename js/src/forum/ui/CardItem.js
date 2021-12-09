@@ -136,40 +136,8 @@ export default function () {
                 </span>
 
                 <div className={'DiscussionListItem-content Slidable-content' + (isUnread ? ' unread' : '') + (isRead ? ' read' : '') + (vasiaSettings.remove_additional_space ? ' D_remove_additional_space' : '')}>
-                    <div style="display: flex; flex-direction: column; margin-right: 15px; font-size: 10px">
-                        {!vasiaSettings.author_bottom ?
-                            <Tooltip
-                                text={app.translator.trans('core.forum.discussion_list.started_text', { user, ago: humanTime(discussion.createdAt()) })}
-                                position="right"
-                            >
-                                <Link className="DiscussionListItem-author author_top" href={user ? app.route.user(user) : '#'}>
-                                    {avatar(user, { title: '' })}
-                                </Link>
-                            </Tooltip>
-                            : ""}
 
-                        {/* {vasiaSettings.buttons_votes_comments_views ?
-                            <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
-                                <div className="DiscussionListItem-options-blocks" title="Voturi">
-                                    <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
-                                    <p className=""><i class="far fa-thumbs-up icon Button-icon" style="margin: 0px;"></i></p>
-                                    {<p className="">{app.translator.trans('block-cat-default.forum.likes')}</p>}
-                                </div>
-
-                                <div className="DiscussionListItem-options-blocks" title="Comentarii">
-                                    <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
-                                    <p className=""><i class="far fa-comments icon Button-icon" style="margin: 0px;"></i></p>
-                                    {<p className="">{app.translator.trans('block-cat-default.forum.comments')}</p>}
-                                </div>
-                                <div className="DiscussionListItem-options-blocks" title="Vizualizări">
-                                    <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
-                                    <p className=""><i class="far fa-eye icon Button-icon" style="margin: 0px;"></i></p>
-                                    {<p className="">{app.translator.trans('block-cat-default.forum.views')}</p>}
-                                </div>
-                            </Link>
-                            : ""} */}
-                    </div>
-                    <ul className="DiscussionListItem-badges badges">{listItems(discussion.badges().toArray())}</ul>
+                    {/* <ul className="DiscussionListItem-badges badges">{listItems(discussion.badges().toArray())}</ul> */}
 
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-main">
                         <h3 className="DiscussionListItem-title" style={"font-size: " + vasiaSettings.title_font_size + "px !important;"}>{highlight(discussion.title(), this.highlightRegExp)}</h3>
@@ -187,25 +155,35 @@ export default function () {
                                 {vasiaSettings.view_tags && vasiaSettings.tags_bottom ? <span style="display: flex;">Etichete: <ul className="DiscussionListItem-info-tags">{tags}</ul></span> : ""}
                             </div>
                             <div class="DiscussionListItem_tags_and_author_div2">
-
-                                {vasiaSettings.buttons_votes_comments_views ?
-                                    <div>123</div>
-                                    : ""}
-                                {vasiaSettings.author_bottom ?
-                                    <div className="DiscussionListItem-options-author">
-                                        <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
-                                            {/* mod by Tudor on 28.11.2021 */}
-                                            <p style="color: hsl(210,8%,45%);">{app.translator.trans('core.forum.discussion_list.started_text', { displayName, ago: humanTime(discussion.createdAt()) })}</p>
-                                            <div style="display: flex;">
-                                                {avatar(user, { title: '' })}
-                                                <div>
-                                                    <p style="font-size: 12px;">{displayName.replace('[șters]', 'anonim')}</p>
-                                                    <p>{user.data ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points}</span> : ""} {user.data ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
-                                                </div>
+                                <div>
+                                    {vasiaSettings.buttons_votes_comments_views ?
+                                        <div className="div_likes_comments">
+                                            <div title="Voturi">
+                                                <h4 className="">{highlight(likes(), this.highlightRegExp)}<span style="margin-left: 5px;">{app.translator.trans('block-cat-default.forum.likes')}</span></h4>
                                             </div>
-                                        </Link>
-                                    </div>
-                                    : ""}
+                                            <div title="Comentarii" style="margin-left: 10px;">
+                                                <h4 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}<span style="margin-left: 5px;">{app.translator.trans('block-cat-default.forum.comments')}</span></h4>
+                                            </div>
+                                        </div>
+                                        : ""}
+                                    {vasiaSettings.author_bottom ?
+                                        <div className="DiscussionListItem-options-author">
+                                            <Link className="author-link" href={user ? app.route.user(user) : '#'} style="flex-direction: column;">
+                                                {/* mod by Tudor on 28.11.2021 */}
+                                                <p style="color: hsl(210,8%,45%);">{app.translator.trans('core.forum.discussion_list.started_text', { displayName, ago: humanTime(discussion.createdAt()) })}</p>
+                                                <div style="display: flex;">
+                                                    {avatar(user, { title: '' })}
+                                                    <div>
+                                                        <p style="font-size: 12px;">{displayName.replace('[șters]', 'anonim')}</p>
+                                                        <p>{user.data ? <span><i class="icon fas fa-trophy Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.points}</span> : ""} {user.data ? <span><i class="icon fas fa-comment Button-icon" style="font-size: 10px; margin-right: 2px;"></i>{user.data.attributes.discussionCount}</span> : ""}</p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                        : ""}
+                                </div>
+                                <hr />
+                                <div></div>
                             </div>
                         </div>
                     </Link>
