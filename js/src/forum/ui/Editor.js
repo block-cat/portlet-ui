@@ -19,9 +19,7 @@ export default function () {
     /* extend(Composer.prototype, 'view', function (view) {
         console.log(view.attrs.className += " fullScreen");
     }) */
-
-
-
+    
     override(ComposerBody.prototype, 'view', function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
         let title = this.headerItems().toArray();
@@ -33,6 +31,33 @@ export default function () {
         } else {
             MyDisplayName = "Anonim"
         }
+
+        let h1 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > .Dropdown-menu > button");
+
+        for (let i = 0; i < h1.length; i++) {
+            console.log(h1[i].innerHTML);
+            switch (h1[i].innerHTML) {
+                case "H1":
+                    h1[i].innerHTML = "Header 1";
+                    break;
+                case "H2":
+                    h1[i].innerHTML = "Header 2";
+                    break;
+                case "H3":
+                    h1[i].innerHTML = "Header 3";
+                    break;
+                case "H4":
+                    h1[i].innerHTML = "Header 4";
+                    break;
+                case "H5":
+                    h1[i].innerHTML = "Header 5";
+                    break;
+                case "H6":
+                    h1[i].innerHTML = "Header 6";
+                    break;
+            }
+        }
+
         return (
             <div className={'ComposerBody ' + (this.attrs.className || '')} >
                 <div className="ComposerBody-content">
