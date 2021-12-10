@@ -35,7 +35,7 @@ export default function () {
         };
 
         return (
-            <header className="Welcome fixed w-11/12 rounded-lg text-center ml-14 p-12 mt-4 z-10">
+            <header className="Welcome sm:fixed w-11/12 rounded-lg text-center ml-4 sm:ml-8 md:ml-14 p-12 mt-4 z-10">
                 <div class="container">
                     {Button.component({
                         icon: 'fas fa-times rounded-full px-4 py-3 hover:bg-blue-100',
@@ -48,11 +48,11 @@ export default function () {
                         <div className="Hero-subtitle" class="text-lg text-white mt-2 mb-4">{m.trust(app.forum.attribute("welcomeMessage"))}</div>
                     </div>
                 </div>
-                <div class="flex mt-4 max-w-5xl mx-auto">
-                    <div class="w-1/2 bg-blue-100 rounded-lg mr-8">
-                    <i class="icon fa fa-pencil-alt text-3xl text-blue-500 pt-8"></i>
+                <div class="md:flex mt-4 max-w-5xl mx-auto">
+                    <div class="sm:w-1/2 bg-blue-100 rounded-lg md:mr-8">
+                    <i class="icon fa fa-edit text-3xl text-blue-500 pt-8"></i>
                         {m("h2", {className:"text-lg p-8 mx-auto"}, this.welcomeSettings.leftText)}
-                        <div id="writeFromWelcomeHero" class="mb-8">
+                        <div id="writeFromWelcomeHero" class="mb-8 pb-4">
                             {
                                 Button.component({
                                     onclick: () => {
@@ -66,10 +66,10 @@ export default function () {
                             }
                         </div>
                     </div>
-                    <div class="w-1/2 bg-red-100 rounded-lg">
+                    <div class="sm:w-1/2 bg-red-100 rounded-lg">
                         <i class="icon fas fa-search text-3xl text-red-500 pt-8"></i>
                         {m("h2", {className:"text-lg p-8 mx-auto"}, this.welcomeSettings.rightText)}
-                        <div id="browseFromWelcomeHero" class="mb-8">
+                        <div id="browseFromWelcomeHero" class="mb-8 pb-4">
                             {
                                 Button.component({
                                     onclick: () => {

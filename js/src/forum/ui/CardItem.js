@@ -18,6 +18,7 @@ import DiscussionListPane from 'flarum/components/DiscussionListPane';
 import PostStream from 'flarum/components/PostStream';
 import LoadingIndicator from 'flarum/components/LoadingIndicator';
 import Tooltip from 'flarum/common/components/Tooltip';
+import CommentPost from 'flarum/components/CommentPost';
 
 import { escapeRegExp } from 'lodash-es';
 export default function () {
@@ -187,6 +188,7 @@ export default function () {
                             </div>
                         </div>
                     </Link>
+                    {/* <CommentPost post={discussion.firstPost()} /> */}
                     <span
                         tabindex="0"
                         role="button"
