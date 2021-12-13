@@ -1,6 +1,7 @@
 import { extend, override } from "flarum/extend";
 import WelcomeHero from "flarum/components/WelcomeHero";
 import Button from "flarum/components/Button";
+import Guguta from "../components/Guguta";
 
 export default function () {
     WelcomeHero.prototype.randomFeatures = function() {
@@ -83,7 +84,15 @@ export default function () {
                         </div>
                     </div>
                 </div>
-                <div class="features flex mt-4 max-w-5xl mx-auto">
+                
+                <div class="features md:flex mt-4 max-w-5xl mx-auto">
+                    {
+                        Guguta.component({
+                            type: 'welcome',
+                            info: 'Salut! Eu sunt Guguță, un robot care te ajută să scrii articole. Dacă ai nevoie de ajutor, te poți întreba în <a href="https://discord.gg/fjQWQZU" target="_blank">Discord</a> sau <a href="https://www.facebook.com/groups/guguta.robot/" target="_blank">Facebook</a>.',
+                            className: 'absolute w-48 md:ml-4 md:-mt-14',
+                        })
+                    }
                     <h1 id="features" class="text-3xl text-blue-300 mx-auto">{this.feature}</h1>
                 </div>
             </header>
