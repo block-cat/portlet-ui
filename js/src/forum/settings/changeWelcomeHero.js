@@ -89,7 +89,7 @@ export default function () {
                     {
                         Guguta.component({
                             type: 'welcome',
-                            info: 'Salut! Eu sunt Guguță, un robot care te ajută să scrii articole. Dacă ai nevoie de ajutor, te poți întreba în <a href="https://discord.gg/fjQWQZU" target="_blank">Discord</a> sau <a href="https://www.facebook.com/groups/guguta.robot/" target="_blank">Facebook</a>.',
+                            info: 'Salut! Eu sunt Guguță, un robot care te ajută să scrii articole.',
                             className: 'absolute w-48 md:ml-4 md:-mt-14',
                         })
                     }
