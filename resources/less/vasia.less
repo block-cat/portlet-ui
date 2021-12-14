@@ -332,8 +332,11 @@
 
 .DiscussionListItem-info {
   padding-bottom: 20px;
-  .item-excerpt{
-    img, iframe {
+
+  .item-excerpt {
+
+    img,
+    iframe {
       border-radius: 8px;
     }
   }
@@ -526,11 +529,12 @@
   .DiscussionListItem_tags_and_author_div2>div {
     display: flex;
   }
+
   .DiscussionListItem_tags_and_author_div2>hr {
     margin-top: 5px;
     margin-bottom: 5px;
   }
-  
+
   .div_likes_comments {
     display: flex;
     color: #666;
@@ -1051,6 +1055,24 @@
   border-radius: 8px !important;
   border: none !important;
 }
-.TextEditor-controls .Dropdown-menu .NodeTypeButton{
+
+.TextEditor-controls .Dropdown-menu .NodeTypeButton {
   width: auto !important;
+}
+
+.TextEditor-toolbar>.ProseMirrorMenu>.itemCount0:first-child>button {
+  width: auto !important;
+}
+
+@media (min-width: 992px) {
+  .App--discussion .Composer:not(.fullScreen) {
+    margin: 0px !important;
+    .TextEditor-controls {
+    box-shadow: none !important;
+    background: transparent !important;
+    }
+  }
+}
+.TextEditor-controls {
+  margin: 0px !important;
 }

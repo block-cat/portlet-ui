@@ -15,7 +15,6 @@ export default function () {
 
         if (vasiaSettings.show_item_sort) {
             let width = window.innerWidth;
-            console.log(width);
             if ((vasiaSettings.modify_item_sort) && (width > 640)) {
                 if (items.has('sort')) {
                     items.remove('sort');

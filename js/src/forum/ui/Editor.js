@@ -19,7 +19,7 @@ export default function () {
     /* extend(Composer.prototype, 'view', function (view) {
         console.log(view.attrs.className += " fullScreen");
     }) */
-    
+
     override(ComposerBody.prototype, 'view', function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
         let title = this.headerItems().toArray();
@@ -33,27 +33,42 @@ export default function () {
         }
 
         let h1 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > .Dropdown-menu > button");
-
+        let h2 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > button > span");
         for (let i = 0; i < h1.length; i++) {
-            console.log(h1[i].innerHTML);
             switch (h1[i].innerHTML) {
                 case "H1":
-                    h1[i].innerHTML = "Header 1";
+                    h1[i].style.display = "none";
                     break;
                 case "H2":
-                    h1[i].innerHTML = "Header 2";
+                    h1[i].innerHTML = "Title";
                     break;
                 case "H3":
-                    h1[i].innerHTML = "Header 3";
+                    h1[i].innerHTML = "Subtitle";
                     break;
                 case "H4":
-                    h1[i].innerHTML = "Header 4";
+                    h1[i].style.display = "none";
                     break;
                 case "H5":
-                    h1[i].innerHTML = "Header 5";
+                    h1[i].style.display = "none";
                     break;
                 case "H6":
-                    h1[i].innerHTML = "Header 6";
+                    h1[i].style.display = "none";
+                    break;
+                case "P":
+                    h1[i].innerHTML = "Normal";
+                    break;
+            }
+        }
+        for (let i = 0; i < h2.length; i++) {
+            switch (h2[i].innerHTML) {
+                case "H2":
+                    h1[i].innerHTML = "Title";
+                    break;
+                case "H3":
+                    h2[i].innerHTML = "Subtitle";
+                    break;
+                case "P":
+                    h2[i].innerHTML = "Normal";
                     break;
             }
         }
@@ -94,7 +109,7 @@ export default function () {
 
     override(Composer.prototype, 'view', function () {
         const body = this.state.body;
-        const classes = {
+        let classes = {
             normal: this.state.position === ComposerState.Position.NORMAL,
             minimized: this.state.position === ComposerState.Position.MINIMIZED,
             /* fullScreen: this.state.position === ComposerState.Position.FULLSCREEN, */
@@ -109,6 +124,10 @@ export default function () {
         this.state.height = window.innerHeight + "px";
 
         //this.state.position;
+
+        if (app.current.data.routeName == "discussion") {
+            classes.fullScreen = false;
+        }
 
         let controlItems2 = this.controlItems().toArray();
         controlItems2.splice(1, 1);
