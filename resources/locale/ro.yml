@@ -11,6 +11,7 @@ block-cat-default:
     comments: "comentarii"
     views: "vizualizări"
     button_citeste_mai_mult: "Citeste mai mult..."
+    confirm_exit_message: "Sigur doriți să mergeți la e-Moldova?"
   admin:
     settings:
       title: "Setări"
