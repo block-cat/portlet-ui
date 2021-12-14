@@ -9,12 +9,14 @@ export default function () {
 
     extend(IndexPage.prototype, 'viewItems', function (items) {
         const vasiaSettings = JSON.parse(app.forum.attribute('block-cat.vasiaSettings'));
-        
+
         // by Tudor
         const sort = app.discussions.params.sort || 'latest';
 
         if (vasiaSettings.show_item_sort) {
-            if (vasiaSettings.modify_item_sort) {
+            let width = window.innerWidth;
+            console.log(width);
+            if ((vasiaSettings.modify_item_sort) && (width > 640)) {
                 if (items.has('sort')) {
                     items.remove('sort');
                 }
