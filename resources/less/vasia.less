@@ -748,8 +748,33 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.Post-body {
+/* .Post-body {
   overflow: visible !important;
+} */
+.Post-body {
+  transition: .2s;
+}
+.Post-body:focus {
+  box-shadow: 0px 0px 5px 2px rgba(28, 93, 153, 0.5);
+}
+
+.Post-body::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 8px;
+}
+
+.Post-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.Post-body::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+  border-radius: 8px;
+}
+
+.Post-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 .Search-input>input {
@@ -1067,12 +1092,14 @@
 @media (min-width: 992px) {
   .App--discussion .Composer:not(.fullScreen) {
     margin: 0px !important;
+
     .TextEditor-controls {
-    box-shadow: none !important;
-    background: transparent !important;
+      box-shadow: none !important;
+      background: transparent !important;
     }
   }
 }
+
 .TextEditor-controls {
   margin: 0px !important;
 }
