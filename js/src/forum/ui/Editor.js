@@ -6,6 +6,7 @@ import ComposerState from 'flarum/states/ComposerState';
 import LinkButton from 'flarum/components/LinkButton';
 import Button from 'flarum/components/Button';
 import listItems from 'flarum/common/helpers/listItems';
+import ItemList from 'flarum/common/utils/ItemList';
 import classList from 'flarum/common/utils/classList';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
 import ConfirmDocumentUnload from 'flarum/common/components/ConfirmDocumentUnload.js';
@@ -22,8 +23,51 @@ export default function () {
 
     override(ComposerBody.prototype, 'view', function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
-        let title = this.headerItems().toArray();
-        title.splice(0, 2);
+
+        let title = this.headerItems();
+        title.add(
+            'closeModal',
+            Button.component(
+                {
+                    icon: 'fas fa-window-close',
+                    className: 'Button  closeModal_button',
+                    onclick: closeModalFunction.bind(this),
+                },
+                "Continuă"),
+            200
+        );
+        function closeModalFunction() {
+            let header = document.getElementsByClassName("ComposerBody-header")[0];
+            header.style.transform = "translate(0px,-100%)";
+        }
+        if (title.has("tags")) {
+            delete title.items['tags'];
+        }
+        if (title.has("title")) {
+            delete title.items['title'];
+        }
+        title = title.toArray();
+
+
+        let button_open_title = new ItemList();
+        button_open_title.add(
+            'openModal',
+            Button.component(
+                {
+                    icon: 'fas fa-window-close',
+                    className: 'Button  closeModal_button',
+                    onclick: openModalFunction.bind(this),
+                },
+                "Titlul"),
+            200
+        );
+        button_open_title = button_open_title.toArray();
+
+        function openModalFunction() {
+            let header = document.getElementsByClassName("ComposerBody-header")[0];
+            header.style.transform = "translate(0px,100%)";
+        }
+
         let etichete = this.headerItems().toArray();
         let MyDisplayName;
         if (this.attrs.user) {
@@ -73,11 +117,21 @@ export default function () {
             }
         }
 
+        /* title.push(
+            LinkButton.component(
+                {
+                    href: app.route('rankings'),
+                    icon: 'fas fa-trophy',
+                    className: 'Button Button--flat rankings_button',
+                })
+        ); */
+
         return (
             <div className={'ComposerBody ' + (this.attrs.className || '')} >
                 <div className="ComposerBody-content">
                     <div className="ComposerBody-content-left">
                         <ul className="ComposerBody-header">{listItems(title)}</ul>
+                        <ul className="">{listItems(button_open_title)}</ul>
                         <div className="ComposerBody-editor">
                             {TextEditor.component({
                                 submitLabel: this.attrs.submitLabel,
