@@ -25,17 +25,25 @@ export default function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
 
         let title = this.headerItems();
+
+        title.add(
+            'Title_text_p',
+            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>,
+            100
+        );
+
         title.add(
             'closeModal',
             Button.component(
                 {
-                    icon: 'fas fa-window-close',
+                    icon: 'fas fa-arrow-right',
                     className: 'Button  closeModal_button',
                     onclick: closeModalFunction.bind(this),
                 },
                 "Continuă"),
             200
         );
+
         function closeModalFunction() {
             let header = document.getElementsByClassName("ComposerBody-header")[0];
             header.style.transform = "translate(0px,-100%)";
@@ -46,7 +54,8 @@ export default function () {
         if (title.has("title")) {
             delete title.items['title'];
         }
-        title = title.toArray();
+
+        let title_array = title.toArray();
 
 
         let button_open_title = new ItemList();
@@ -54,7 +63,7 @@ export default function () {
             'openModal',
             Button.component(
                 {
-                    icon: 'fas fa-window-close',
+                    icon: 'fas fa-pencil-alt',
                     className: 'Button  closeModal_button',
                     onclick: openModalFunction.bind(this),
                 },
@@ -130,8 +139,9 @@ export default function () {
             <div className={'ComposerBody ' + (this.attrs.className || '')} >
                 <div className="ComposerBody-content">
                     <div className="ComposerBody-content-left">
-                        <ul className="ComposerBody-header">{listItems(title)}</ul>
-                        <ul className="">{listItems(button_open_title)}</ul>
+                        {title.has("discussionTitle") ? (
+                            <ul className="ComposerBody-header">{listItems(title_array)}</ul>
+                        ) : ""}
                         <div className="ComposerBody-editor">
                             {TextEditor.component({
                                 submitLabel: this.attrs.submitLabel,
@@ -146,7 +156,10 @@ export default function () {
                         </div>
                     </div>
                     <div className="ComposerBody-content-right">
-                        <div className="author">{this.attrs.user ? avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' }) : ""} <p className="my_displa_name">{MyDisplayName}</p></div>
+                        {title.has("discussionTitle") ? (
+                            <ul className="">{listItems(button_open_title)}</ul>
+                        ) : ""}
+                        {/* <div className="author">{this.attrs.user ? avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' }) : ""} <p className="my_displa_name">{MyDisplayName}</p></div> */}
                         <ul className="ComposerBody-etichete">{listItems(etichete[1])}</ul>
                         <div className="Button Button_publicare" onclick={this.onsubmit.bind(this)}>{this.attrs.submitLabel}</div>
                     </div>
