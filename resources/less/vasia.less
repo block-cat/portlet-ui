@@ -943,20 +943,21 @@
   }
 
   .ComposerBody-editor {
-    .TextEditor-guestFields:focus {
-      box-shadow: 0px 0px 5px 2px rgba(28, 93, 153, 0.5);
 
-    }
 
     .TextEditor {
       display: flex;
       flex-direction: column-reverse;
       position: relative;
 
-      ol,
-      ul {
-        list-style: unset !important;
-        padding-left: 40px !important;
+      .FormControl {
+
+        ol,
+        ul {
+          list-style: unset !important;
+          padding-left: 40px !important;
+        }
+
       }
     }
 
@@ -1006,10 +1007,10 @@
           padding: 0px !important;
         }
 
-        span[data-original-title="Select Text Type"] {
+        /* span[data-original-title="Select Text Type"] {
           padding: 3px !important;
           font-size: 16px;
-        }
+        } */
 
         i {
           padding: 6px;
@@ -1205,6 +1206,12 @@
   width: 40%;
   border-radius: 8px !important;
   border: none !important;
+  transition: .3s;
+}
+
+.TextEditor-guestFields:hover {
+  box-shadow: 0px 0px 5px 2px rgba(28, 93, 153, 0.5);
+
 }
 
 .TextEditor-controls .Dropdown-menu .NodeTypeButton {
