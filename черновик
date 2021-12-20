@@ -1,4 +1,65 @@
 
+
+
+
+
+
+
+
+
+
+
+        /* let h1 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > .Dropdown-menu > button");
+        let h2 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > button > span");
+        for (let i = 0; i < h1.length; i++) {
+            switch (h1[i].innerHTML) {
+                case "H1":
+                    h1[i].style.display = "none";
+                    break;
+                case "H2":
+                    h1[i].innerHTML = "Title";
+                    break;
+                case "H3":
+                    h1[i].innerHTML = "Subtitle";
+                    break;
+                case "H4":
+                    h1[i].style.display = "none";
+                    break;
+                case "H5":
+                    h1[i].style.display = "none";
+                    break;
+                case "H6":
+                    h1[i].style.display = "none";
+                    break;
+                case "P":
+                    h1[i].innerHTML = "Normal";
+                    break;
+            }
+        } */
+        /* for (let i = 0; i < h2.length; i++) {
+            switch (h2[i].innerHTML) {
+                case "H2":
+                    h1[i].innerHTML = "Title";
+                    break;
+                case "H3":
+                    h2[i].innerHTML = "Subtitle";
+                    break;
+                case "P":
+                    h2[i].innerHTML = "Normal";
+                    break;
+            }
+        } */
+
+
+
+
+
+
+
+
+
+
+
                                 {/* <div className="DiscussionListItem-options-blocks">
                             <Link className="" href={user ? app.route.user(user) : '#'}>
                                 {avatar(user, { title: '' })}
