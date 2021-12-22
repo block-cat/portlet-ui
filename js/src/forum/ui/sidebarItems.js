@@ -54,8 +54,8 @@ export default function () {
           items1.splice(i, 1);
         }
       }
-      if (vasiaSettings.button_etichete == 0) {
-        if (items1[i].itemName === "tags") {
+      if ((vasiaSettings.button_etichete == 0) || (vasiaSettings.button_etichete_in_header == 1)) {
+        if ((items1[i].itemName === "tags") && (app.current.data.routeName != "tags")) {
           items1.splice(i, 1);
         }
       }
@@ -71,6 +71,10 @@ export default function () {
       if (items2[i].itemName === "separator") {
         items2.splice(0, i + 1);
       }
+    }
+
+    if (app.current.data.routeName == "tags") {
+      items2 = [];
     }
 
     if (!vasiaSettings.sideNav_shadow) {

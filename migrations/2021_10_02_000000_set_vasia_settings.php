@@ -11,6 +11,7 @@ $vasia_settings = [
     'tags_bottom' => 1,
     'view_hero' => 0,
     'button_etichete' => 0,
+    'button_etichete_in_header' => 1,
     'sidenav_fixed' => 1,
     'button_adauga_right' => 1,
     'remove_additional_space' => 1,

@@ -29,6 +29,7 @@ export default function () {
 
         const discussion = this.discussion;
 
+
         return (
             <div className="DiscussionPage">
                 <DiscussionListPane state={app.discussions} />

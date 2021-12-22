@@ -22,5 +22,19 @@ export default function () {
         20
       );
     }
+
+    if (vasiaSettings.button_etichete_in_header) {
+
+      items.add(
+        'Tags',
+        LinkButton.component(
+          {
+            href: app.route('tags'),
+            icon: 'fas fa-th-large',
+            className: 'Button Button--flat rankings_button',
+          }),
+        20
+      );
+    }
   });
 }

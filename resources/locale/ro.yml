@@ -74,6 +74,7 @@ block-cat-default:
       tags_bottom: "Tags Bottom (Off/On)"
       view_hero: "View Hero"
       button_etichete: "Etichete (Off/On)"
+      button_etichete_in_header: "Etichete in Header Secondary(Off/On)"
       sidenav_fixed: "SideNav fixed (Off/On)"
       button_adauga_right: "Button adauga right (Off/On)"
       remove_additional_space: "Remove additional space (Off/On)"

@@ -8,7 +8,7 @@
   }
 
   .sideNavOffset {
-    margin-left: 185px !important;
+    margin-left: 210px !important;
   }
 
   .TagsPage .sideNav>ul>li,
@@ -20,6 +20,14 @@
   .TagsPage {
     .sideNav .Dropdown--select .Dropdown-menu {
       margin-left: 0px !important;
+
+      li {
+        margin: 0px !important;
+
+        a {
+          padding-left: 40px;
+        }
+      }
     }
   }
 }
@@ -197,6 +205,10 @@
 
 .IndexPage,
 .DiscussionPage {
+  .sidenav_fixed {
+    width: 230px !important;
+  }
+
   // @media (min-width: 992px) {
 
   // @media (min-width: 992px) {
@@ -1158,9 +1170,48 @@
 
 .PostStream-item[data-number='1'] {
 
-  .item-user,
+
+  /* .item-user,
   .item-guest-user {
     display: none !important;
+  } */
+  .Post-body {
+    margin-bottom: 15px;
+  }
+
+  .item-user,
+  .item-guest-user {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    text-align: right;
+
+    .badges {
+      display: none;
+    }
+
+
+    .Avatar {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      margin-right: 10px;
+      border-radius: 6px;
+      left: 0px;
+      position: relative !important;
+      --size: 48px;
+    }
+
+    .username {
+      font-size: 12px;
+      font-weight: 500;
+      color: #135DA2;
+    }
+
+    .UserOnline {
+      display: none;
+    }
   }
 
   .item-edited {
@@ -1172,10 +1223,17 @@
     .Post {
       padding: 20px !important;
       padding-top: 10px !important;
+      padding-bottom: 10px !important;
       margin: 0px;
       background: #e4edf6;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
+    }
+
+    .Post-actions {
+      margin-top: 5px !important;
+      opacity: 1 !important;
+      padding-right: 130px;
     }
 
     /* .item-votes {

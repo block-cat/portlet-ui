@@ -13,7 +13,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
 
     // get welcome settings
     this.welcomeSettings = JSON.parse(app.data.settings["block-cat.welcome_settings"] || null);
-    
+
     if (!this.welcomeSettings) {
       this.welcomeSettings = {
         leftText: '',
@@ -21,7 +21,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
         sliderItems: [],
       };
     }
-    
+
     // get settings name in Object format
     this.settings = JSON.parse(app.data.settings["block-cat.default_settings"]);
     // get routes name in Object format
@@ -119,7 +119,7 @@ export default class DefaultSettingsPage extends ExtensionPage {
                           ),
                         ]) : ''
                     ];
-                  } else if ((key === 'tags_bottom' && this.vasia_settings['view_tags']) || (key === 'modify_item_sort' && this.vasia_settings['show_item_sort'])) {
+                  } else if ((key === 'tags_bottom' && this.vasia_settings['view_tags']) || (key === 'modify_item_sort' && this.vasia_settings['show_item_sort']) || (key === 'button_etichete_in_header' && this.vasia_settings['button_etichete'])) {
                     return [
                       !this.settingStates.hideDiscussionMenu ? // check if 'discussionMenu' is not selected
                         m('.Form-group .Form-group-children', [ // controlsButton and scrubberDiv
