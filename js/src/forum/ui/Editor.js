@@ -28,7 +28,7 @@ export default function () {
 
         title.add(
             'Title_text_p',
-            <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>,
+            <div>{app.translator.trans('block-cat-default.admin.vasia_settings.editor_text')}</div>,
             100
         );
 
