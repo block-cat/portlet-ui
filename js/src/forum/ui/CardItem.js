@@ -23,46 +23,7 @@ import CommentPost from 'flarum/components/CommentPost';
 import { escapeRegExp } from 'lodash-es';
 export default function () {
 
-
-
-    override(DiscussionPage.prototype, 'view', function () {
-
-        const discussion = this.discussion;
-
-
-        return (
-            <div className="DiscussionPage">
-                <DiscussionListPane state={app.discussions} />
-                <div className="DiscussionPage-discussion">
-                    {discussion ? (
-                        [
-                            DiscussionHero.component({ discussion }),
-                            <div className="container">
-                                <nav className="DiscussionPage-nav">
-                                    <ul>{listItems(this.sidebarItems().toArray())}</ul>
-                                </nav>
-                                <div className="DiscussionPage-stream">
-                                    {PostStream.component({
-                                        discussion,
-                                        stream: this.stream,
-                                        onPositionChange: this.positionChanged.bind(this),
-                                    })}
-                                </div>
-                            </div>,
-                        ]
-                    ) : (
-                        <LoadingIndicator />
-                    )}
-                </div>
-            </div>
-        );
-    }
-    );
-
-
     override(DiscussionListItem.prototype, 'view', function () {
-
-
 
         const discussion = this.attrs.discussion;
         const user = discussion.user();

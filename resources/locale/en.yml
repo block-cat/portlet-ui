@@ -13,6 +13,8 @@ block-cat-default:
     button_citeste_mai_mult: "Read more..."
     confirm_exit_message: "Are you sure you want to go on e-Moldova?"
     editor_text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    header_button_ranking: "Rankings"
+    header_button_tags: "Tags"
   admin:
     settings:
       title: "Settings"

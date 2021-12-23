@@ -1315,8 +1315,64 @@
 .rankings-loadmore {
   text-align: center;
 }
+
 .rankings-info {
   .Avatar {
     margin: auto !important;
+  }
+}
+
+.DiscussionPage-nav {
+  .DiscussionHero {
+    display: block !important;
+    background-color: transparent !important;
+
+    .container {
+      width: auto !important;
+      padding: 0px !important;
+      margin: 0px !important;
+
+      .item-title {
+        display: none;
+      }
+
+      .item-tags::before {
+        content: "Etichete: ";
+        color: #668099;
+        margin-left: 10px;
+      }
+
+      .item-tags {
+        text-align: left;
+        width: 100%;
+
+        .TagsLabel {
+          display: block;
+        }
+
+        .TagLabel {
+          background: #e4edf6 !important;
+          margin-top: 7px;
+          margin-bottom: 7px;
+          margin-left: 0px;
+          margin-right: 0px;
+          width: 100%;
+          transition: .2s;
+          text-decoration: none;
+        }
+
+        .TagLabel:hover {
+          background: #c6ced6 !important;
+          transform: scale(0.96);
+        }
+
+        .TagLabel-text {
+          color: #668099 !important;
+          background: transparent !important;
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+    }
   }
 }

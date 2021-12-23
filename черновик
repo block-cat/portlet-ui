@@ -9,6 +9,55 @@
 
 
 
+
+
+
+
+
+
+
+
+    override(DiscussionPage.prototype, 'view', function () {
+
+        const discussion = this.discussion;
+
+
+        return (
+            <div className="DiscussionPage">
+                <DiscussionListPane state={app.discussions} />
+                <div className="DiscussionPage-discussion">
+                    {discussion ? (
+                        [
+                            DiscussionHero.component({ discussion }),
+                            <div className="container">
+                                <nav className="DiscussionPage-nav">
+                                    <ul>{listItems(this.sidebarItems().toArray())}</ul>
+                                </nav>
+                                <div className="DiscussionPage-stream">
+                                    {PostStream.component({
+                                        discussion,
+                                        stream: this.stream,
+                                        onPositionChange: this.positionChanged.bind(this),
+                                    })}
+                                </div>
+                            </div>,
+                        ]
+                    ) : (
+                        <LoadingIndicator />
+                    )}
+                </div>
+            </div>
+        );
+    });
+
+
+
+
+
+
+
+
+
         /* let h1 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > .Dropdown-menu > button");
         let h2 = document.querySelectorAll(".TextEditor-toolbar > .ProseMirrorMenu > .itemCount0:first-child > button > span");
         for (let i = 0; i < h1.length; i++) {

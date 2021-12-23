@@ -24,7 +24,11 @@ export default function () {
 
 
         if (discussion) {
+            /* let tags = DiscussionHero.prototype.items(discussion); */
+
+            console.log(discussion.payload.included);
             const badges = discussion.badges().toArray();
+            
             if (badges.length) {
                 items.add('badges', <ul className="DiscussionHero-badges badges">{listItems(badges)}</ul>, 10);
             }
@@ -51,6 +55,7 @@ export default function () {
                                     </div>
                                     <div className="sideNavOffset" style="width: 100%; padding-top: 30px;">
                                         <nav className="DiscussionPage-nav">
+                                            {DiscussionHero.component({ discussion })}
                                             <ul>{listItems(this.sidebarItems().toArray())}</ul>
                                         </nav>
                                         <div className="DiscussionPage-stream">

@@ -17,6 +17,7 @@ export default function () {
           {
             href: app.route('rankings'),
             icon: 'fas fa-trophy',
+            'aria-label': app.translator.trans('block-cat-default.forum.header_button_ranking'),
             className: 'Button Button--flat rankings_button',
           }),
         20
@@ -31,6 +32,7 @@ export default function () {
           {
             href: app.route('tags'),
             icon: 'fas fa-th-large',
+            'aria-label': app.translator.trans('block-cat-default.forum.header_button_tags'),
             className: 'Button Button--flat rankings_button',
           }),
         20
