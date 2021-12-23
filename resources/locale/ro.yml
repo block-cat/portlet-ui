@@ -12,6 +12,7 @@ block-cat-default:
     views: "vizualizări"
     button_citeste_mai_mult: "Citeste mai mult..."
     confirm_exit_message: "Sigur doriți să mergeți la e-Moldova?"
+    editor_text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   admin:
     settings:
       title: "Setări"
@@ -88,7 +89,6 @@ block-cat-default:
       item_excerpt_color: "Item-except color"
       rankings_button_header: "Rankings button in header"
       author_bottom: "Post author bottom"
-      editor_text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     welcome_settings:
       title: "Bun venit!"
       leftText: "Text din stânga"

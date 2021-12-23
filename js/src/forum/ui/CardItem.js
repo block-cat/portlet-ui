@@ -166,6 +166,11 @@ export default function () {
                                             <div title="Comentarii" style="margin-left: 10px;">
                                                 <h4 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}<span style="margin-left: 5px;">{app.translator.trans('block-cat-default.forum.comments')}</span></h4>
                                             </div>
+                                            {discussion.viewCount ?
+                                                <div title="Vizualizări" style="margin-left: 10px;">
+                                                    <h4 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}<span style="margin-left: 5px;">{app.translator.trans('block-cat-default.forum.views')}</span></h4>
+                                                </div>
+                                                : ""}
                                         </div>
                                         : ""}
                                     {vasiaSettings.author_bottom ?
