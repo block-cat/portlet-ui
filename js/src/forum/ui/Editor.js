@@ -20,6 +20,28 @@ export default function () {
     /* extend(Composer.prototype, 'view', function (view) {
         console.log(view.attrs.className += " fullScreen");
     }) */
+    ComposerBody.prototype.rightContent = function() {
+        const items = new ItemList();
+
+        function openModalFunction() {
+            let header = document.getElementsByClassName("ComposerBody-header")[0];
+            header.style.transform = "translate(0px,100%)";
+        }
+
+        items.add(
+            'openModal',
+            Button.component(
+                {
+                    icon: 'fas fa-pencil-alt',
+                    className: 'Button  closeModal_button',
+                    onclick: openModalFunction.bind(this),
+                },
+                "Titlul"),
+            200
+        );
+
+        return items;
+    }
 
     override(ComposerBody.prototype, 'view', function () {
         {/* <ConfirmDocumentUnload when={this.hasChanges.bind(this)}> */ }
@@ -56,26 +78,6 @@ export default function () {
         }
 
         let title_array = title.toArray();
-
-
-        let button_open_title = new ItemList();
-        button_open_title.add(
-            'openModal',
-            Button.component(
-                {
-                    icon: 'fas fa-pencil-alt',
-                    className: 'Button  closeModal_button',
-                    onclick: openModalFunction.bind(this),
-                },
-                "Titlul"),
-            200
-        );
-        button_open_title = button_open_title.toArray();
-
-        function openModalFunction() {
-            let header = document.getElementsByClassName("ComposerBody-header")[0];
-            header.style.transform = "translate(0px,100%)";
-        }
 
         let etichete = this.headerItems().toArray();
         let MyDisplayName;
@@ -117,7 +119,7 @@ export default function () {
                     </div>
                     <div className="ComposerBody-content-right">
                         {title.has("discussionTitle") ? (
-                            <ul className="">{listItems(button_open_title)}</ul>
+                            <ul className="">{listItems(this.rightContent().toArray())}</ul>
                         ) : ""}
                         {/* <div className="author">{this.attrs.user ? avatar(this.attrs.user, { className: 'ComposerBody-avatar-right' }) : ""} <p className="my_displa_name">{MyDisplayName}</p></div> */}
                         <ul className="ComposerBody-etichete">{listItems(etichete[1])}</ul>
