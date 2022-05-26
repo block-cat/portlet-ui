@@ -48,6 +48,8 @@ block-cat-default:
       terminalPost_help_text: "Remove last action info from every discussion on main page"
       pane: "Remove <em>Pane</em>"
       pane_help_text: "Remove leftside pane on discussion page"
+    settings2:
+      title: "Buttons"
     routes:
       title: "Routes"
       hint: "Original path:"
