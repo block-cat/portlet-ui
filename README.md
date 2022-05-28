@@ -1,10 +1,6 @@
 # Portlet UI
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/block-cat/portlet-ui.svg)](https://packagist.org/packages/block-cat/portlet-ui)
-
-**Extensia nu este publicată pe [Packagist](https://packagist.org/)!**
-
-Aceasta este o extensie [Flarum](https://flarum.org/) care oferă posibilitatea de a modifica reprezentarea vizuală a portletului. Aceasta permite adăugarea de elemente noi, dar și dezactivarea unor elemente implicite din Flarum.
+Aceasta este o extensie de portlet care oferă posibilitatea de a modifica reprezentarea vizuală (UI) a portletului din panoul de administrare. Aceasta permite adăugarea de elemente noi, dar și dezactivarea unor elemente precum ordonarea articoleleor, butonul de refresh, cronologia articolului etc.
 
 ## Compatibilitate
 
@@ -41,3 +37,7 @@ php flarum cache:clear
 
 - [Cod sursă pe GitHub](https://github.com/block-cat/portlet-ui)
 - [Changelog](CHANGELOG.md)
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/block-cat/portlet-ui.svg)](https://packagist.org/packages/block-cat/portlet-ui)
+
+**Extensia nu este publicată pe [Packagist](https://packagist.org/)!**
